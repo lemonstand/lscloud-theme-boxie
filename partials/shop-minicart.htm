@@ -1,0 +1,36 @@
+
+{% if cart.listitems|length %}
+	<ul class="cart-items list-unstyled hidden-xs">
+		{% for item in cart.listitems %}
+		<li class="row cart-item">
+		    <div class="product-thumb col-xs-4">
+		        <img class="img-responsive" alt="{{ item.product.name }}" src="{{ item.product.images.first.thumbnail(100, 100)|default('http://placehold.it/100x100') }}" />
+		    </div>
+		    <div class="product-info col-xs-8">
+		        <h6 class="product-title">{{ item.product.name }}</h6>
+		        <div class="price">
+		            {{ item.quantity }} x <span>{{ item.product.price|currency }}</span>
+		        </div>
+		        {# {%if edit_cart %} #}
+		        <a class="remove-item" href="#"
+		        	data-ajax-handler="shop:cart" 
+					{# data-ajax-confirm="Do you really want to remove this item from the cart?" #}
+					data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart, #navbar-totals=shop-minicart-totals"
+					data-ajax-extra-fields="delete_item='{{ item.key }}'"><i class="fa fa-times"></i></a>
+		        {# {% endif %} #}
+		    </div>
+		</li>
+		{% endfor %}
+	</ul>
+    <div class="mini-cart-totals">
+    	<h4 class="subtotal">Subtotal: {{ cart.getSubtotal()|currency }}</h4>
+    	<a class="btn btn-default btn-lg" href="{{ site_url('/cart') }}">View Cart</a>
+    	{% if customer %}
+    	<a class="col-xs-12 btn btn-danger solid btn-lg" href="{{ site_url('/checkout') }}">Checkout</a>
+    	{% else %}
+    	<a class="col-xs-12 btn btn-danger solid btn-lg" href="{{ site_url('/checkout-start') }}">Checkout</a>
+    	{% endif %}
+    </div>
+{% else %}
+	<h6>No items in cart.</h6>
+{% endif %}

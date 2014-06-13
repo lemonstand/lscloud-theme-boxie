@@ -1,0 +1,95 @@
+---
+description: 'Payment form partial for Payfirma payment method'
+---
+<form method="post" action="" id="payfirma-payment-form">
+    <input type="hidden" name="payment_method_id" value="{{ paymentMethod.id}}">
+    <div class="form">
+        <div class="row field-row">
+        
+	        <div class="col-sm-6 form-group">
+	            
+	            <input autocomplete="off" name="FIRSTNAME" value="" id="FIRSTNAME" type="text" class="form-control" placeholder="Cardholder First Name"/>
+	            <label for="FIRSTNAME">Cardholder First Name</label>
+	        </div>
+	        <div class="col-sm-6 form-group">
+	            
+	            <input autocomplete="off" name="LASTNAME" value="" id="LASTNAME" type="text" class="form-control" placeholder="Cardholder Last Name"/>
+	            <label for="LASTNAME">Cardholder Last Name</label>
+	        </div>
+        
+	        <div class="col-sm-6 form-group">
+	            
+	            <input autocomplete="off" name="ACCT" value="" id="ACCT" type="text" class="form-control credit-card-input" placeholder="Credit Card Number"/>
+	            <label for="ACCT">Credit Card Number</label>
+	        </div>
+	        
+	        <div class="col-sm-6 form-group">
+	        	<input autocomplete="off" name="CVV2" value="" id="CVV2" type="text" class="form-control" placeholder="Card Security Code"/>
+	            <label for="CVV2">
+	                Card Security Code
+	            </label>
+	            <i class="fa fa-question" data-container="body" data-toggle="popover" data-placement="top" data-content="For MasterCard, Visa, and Discover, the CSC is the last three digits in the signature area on the back of your card. For American Express, it's the four digits on the front of the card."></i>
+	        </div>
+		
+	        <div class="col-sm-6 form-group">
+	            <label for="EXPDATE_MONTH">Expiration Date - Month</label>
+	            <select name="EXPDATE_MONTH" id="EXPDATE_MONTH" class="form-control">
+	            {% for i in 1..12 %}
+	                <option value="{{ i }}">{{ i }}</option>
+	            {% endfor %}
+	            </select>
+	        </div>
+		
+	        <div class="col-sm-6 form-group">
+	            <label for="EXPDATE_YEAR">Expiration Date - Year</label>
+	
+	            <select autocomplete="off" name="EXPDATE_YEAR" id="EXPDATE_YEAR" class="form-control">
+	                {% for i in 2014..2034 %}
+	                <option value="{{ i|slice(2, 2) }}">{{ i }}</option>
+	                {% endfor %}
+	            </select>
+	        </div>
+	        
+		</div>
+    </div>
+
+    <div class="clearfix">
+	    <a class="btn btn-default btn-lg btn-checkout-step pull-left" href="#" 
+        data-ajax-handler="shop:checkout" 
+        data-ajax-update="#checkout-page=shop-checkout, #checkout-progress=shop-checkout-progress, #mini-cart=shop-minicart"
+        data-ajax-extra-fields="nextStep=shipping_method"><i class="fa fa-arrow-left"></i> Previous Step</a>
+	    <input type="button" value="Pay Now" class="btn btn-danger solid btn-lg btn-checkout-step pull-right" onClick="doPayfirma(this)">
+    </div>
+</form>
+
+<script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/ls2-vendor-code/payfirma/payfirma.minified.js"></script>
+<script type="text/javascript">
+    function doPayfirma(button) {
+        var form = $(button).parents('form')
+        var card_number = form.find('input[name="ACCT"]').val()
+        var card_expiry_month = form.find('select[name="EXPDATE_MONTH"]').val()
+        var card_expiry_year = form.find('select[name="EXPDATE_YEAR"]').val()
+        var cvv2 = form.find('input[name="CVV2"]').val()
+
+        var key = "{{ paymentMethod.getConfigSetting('encryptionKey') }}"
+        var formData = {};
+        $.each($('#payfirma-payment-form input, #payfirma-payment-form select'), function() {
+            formData[this.name] = this.value; }
+            );
+        var z = new Payfirma(key, {
+                'card_number': card_number,
+                'card_expiry_month': card_expiry_month,
+                'card_expiry_year':  card_expiry_year,
+                'cvv2': cvv2
+            }, formData, '/ls_payfirma_process', onAfterPayfirmaPay)
+    }
+
+    function onAfterPayfirmaPay(response) {
+        var r = $.parseJSON(response)
+        if (r.error)
+            alert(r.error)
+
+        if (r.redirect)
+            window.location = r.redirect
+    }
+</script>

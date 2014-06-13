@@ -1,0 +1,125 @@
+{{ flash() }}
+{{ open_form({'class': 'custom', 'data-validation-message' : ''}) }}
+<h2>Billing Information</h2>
+<div id="billing-info" class="row">
+	<div class="col-sm-6 form-group">
+		<input data-mirror type="text" class="form-control" name="billingInfo[firstName]" id="billing_firstName" value="{{ billingInfo.firstName }}" placeholder="First Name"/>
+		<label for="billing_firstName">First Name</label>
+		<span class="error"></span>
+	</div>
+	<div class="col-sm-6 form-group">
+		<input data-mirror type="text" class="form-control" name="billingInfo[lastName]" id="billing_lastName" value="{{ billingInfo.lastName }}" placeholder="Last Name"/>
+		<label for="billing_lastName">Last Name</label>
+		<span class="error"></span>
+	</div>
+	<div class="col-sm-6 form-group">
+		<input type="email" class="form-control" name="billingInfo[email]" id="billing_email" value="{{ billingInfo.email }}" placeholder="E-mail Address"/>
+		<label for="billing_email">E-mail Address</label>
+		<span class="error"></span>
+	</div>
+	<div class="col-sm-6 form-group">
+		<input data-mirror type="text" class="form-control" name="billingInfo[phone]" id="billing_phone" value="{{ billingInfo.phone }}" placeholder="Phone Number"/>
+		<label for="billing_phone">Phone Number</label>
+		<span class="error"></span>
+	</div>
+	<div class="col-sm-12 form-group">
+		<input data-mirror type="text" class="form-control" id="billing_address" name="billingInfo[streetAddressLine1]" value="{{ billingInfo.streetAddressLine1 }}" placeholder="Address"/>
+		<label for="billing_address">Address</label>
+		<span class="error"></span>
+	</div>
+	<div class="col-sm-6 form-group">
+		<input data-mirror type="text" class="form-control" name="billingInfo[city]" id="billing_city" value="{{ billingInfo.city }}" placeholder="City"/>
+		<label for="billing_city">City</label>
+		<span class="error"></span>
+	</div>
+	<div class="col-sm-6 form-group">
+		<input data-mirror type="text" class="form-control" id="billing_postalCode" name="billingInfo[postalCode]" value="{{ billingInfo.postalCode }}" placeholder="Zip Code"/>
+		<label for="billing_postalCode">Zip Code</label>
+		<span class="error"></span>
+	</div>
+	<div class="col-sm-6 form-group">
+		<label for="billing_country" class="hide">Country</label>
+		<!-- 
+			The state selector updates automatically when the country changes. 
+			See app.js for the implementation details. 
+			-->        
+			<select data-mirror id="billing_country" class="chzn-select form-control" name="billingInfo[countryId]" data-state-selector="#billing_state" data-current-state="{{ billingInfo.stateId }}">
+			{% for country in countries %}
+			<option {{ option_state(billingInfo.countryId, country.id) }} value="{{ country.id }}">{{ country.name }}</option>
+			{% endfor %}
+			</select>
+		<span class="error"></span>
+	</div>
+	<div class="col-sm-6 form-group">
+		<label for="billing_state" class="hide">State</label>
+			<select data-mirror id="billing_state" class="chzn-select form-control" name="billingInfo[stateId]" data-ajax-refresh> 
+			{{ partial('shop-stateoptions', {'states': billingStates, 'selected': billingInfo.stateId}) }}
+			</select>
+		<span class="error"></span>
+	</div>
+</div>
+{# row #}
+<h2 class="inline-block">Shipping Information</h2>
+
+<div class="h6">
+	<a data-toggle-mirror="on" data-toggle="collapse" class="btn btn-default btn-form-mirror" href="#shipping-info"><i class="fa fa-check"></i></a> 
+	Same as Billing Information
+</div>
+
+<div id="shipping-info" class="row panel-collapse collapse">
+	<div class="col-sm-6 form-group">
+		<input  data-mirror type="text" class="form-control" name="shippingInfo[firstName]" id="shipping_firstName" value="{{ shippingInfo.firstName }}" placeholder="First Name"/>
+		<label for="shipping_firstName">First Name</label>
+		<span class="error"></span>
+	</div>
+	<div class="col-sm-6 form-group">
+		<input data-mirror type="text" class="form-control" name="shippingInfo[lastName]" id="shipping_lastName" value="{{ shippingInfo.lastName }}" placeholder="Last Name"/>
+		<label for="shipping_lastName">Last Name</label>
+		<span class="error"></span>
+	</div>
+	<div class="col-sm-6 form-group">
+		<input data-mirror type="text" class="form-control" name="shippingInfo[phone]" id="shipping_phone" value="{{ shippingInfo.phone }}" placeholder="Phone Number"/>
+		<label for="shipping_phone">Phone Number</label>
+		<span class="error"></span>
+	</div>
+	<div class="col-sm-12 form-group">
+		<input data-mirror type="text" class="form-control" name="shippingInfo[streetAddressLine1]" id="shipping_address"  value="{{ shippingInfo.streetAddressLine1 }}" placeholder="Address"/>
+		<label for="shipping_address">Address</label>
+		<span class="error"></span>
+	</div>
+	<div class="col-sm-6 form-group">
+		<input data-mirror type="text" class="form-control" name="shippingInfo[city]" id="shipping_city" value="{{ shippingInfo.city }}" placeholder="City"/>
+		<label for="shipping_city">City</label>
+		<span class="error"></span>
+	</div>
+	<div class="col-sm-6 form-group">
+		<input data-mirror type="text" class="form-control" name="shippingInfo[postalCode]" id="shipping_postalCode" value="{{ shippingInfo.postalCode }}" placeholder="Zip Code"/>
+		<label for="shipping_postalCode">Zip Code</label>
+		<span class="error"></span>
+	</div>
+	<div class="col-sm-6 form-group">
+		<label for="shipping_country" class="hide">Country</label>
+			<select data-mirror id="shipping_country" class="chzn-select form-control" name="shippingInfo[countryId]" data-state-selector="#shipping_state" data-current-state="{{ shippingInfo.stateId }}" >
+			{% for country in countries %}
+			<option {{ option_state(shippingInfo.countryId, country.id) }} value="{{ country.id }}">{{ country.name }}</option>
+			{% endfor %}
+			</select>
+		<span class="error"></span>
+	</div>
+	<div class="col-sm-6 form-group">
+		<label for="shipping_state" class="hide">State</label>
+			<select data-mirror id="shipping_state" class="chzn-select form-control" name="shippingInfo[stateId]" data-ajax-refresh > 
+			{{ partial('shop-stateoptions', {'states': shippingStates, 'selected': shippingInfo.stateId}) }}
+			</select>
+		<span class="error"></span> 
+	</div>
+</div>
+
+<!-- See the onSetBillingAndShippignInfo AJAX handler implementation on the Checkout page's AJAX tab -->
+		
+		<div class="clearfix">
+			<a class="btn btn-primary btn-lg btn-checkout-step pull-right" href="#" data-ajax-handler="shop:checkout" data-ajax-update="#checkout-page=shop-checkout, #checkout-progress=shop-checkout-progress, #mini-cart=shop-minicart">Next Step <i class="fa fa-arrow-right"></i></a>
+		</div>
+		<input type="hidden" id="billing-current-step" name="step" value="billing_info,shipping_info"/>
+        <input type="hidden" id="billing-next-step" name="nextStep" value="shipping_method" />
+{{ close_form }}

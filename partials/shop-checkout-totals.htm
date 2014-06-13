@@ -1,0 +1,17 @@
+<div id="cart-summary">
+	{% if items.count %}
+		<h3 class="cart-summary-title">Order Summary</h3>
+		<ul class="price-list list-group">
+            <li class="list-group-item">Subtotal: <span class="badge">{{ cart.getSubtotal()|currency }}</span></li>
+            {% if totals.totalShippingQuote %}
+            <li class="list-group-item order-shipping">Shipping: <span class="badge">{{ totals.totalShippingQuote|currency }}</span></li>
+            {% endif %}
+            <li class="list-group-item">Tax: <span class="badge">{{ totals.totalTax|currency }}</span></li>
+            <li class="list-group-item order-total h4 clearfix"><span>Total:</span> <span class="badge">{{ totals.total|currency }}</span></li>
+        </ul>
+
+	{% else %}
+		<h4 class="md-bordered-title">Your cart is empty!</h4>
+		<a class="btn btn-primary col-xs-12" href="{{ site_url('shop') }}">Continue shopping <span class="fa fa-arrow-right"></span></a>
+	{% endif %}
+</div>

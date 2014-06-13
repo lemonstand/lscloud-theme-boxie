@@ -1,0 +1,21 @@
+<div class="cart-labels clearfix hidden-xs">
+	<div class="col-sm-4 col-sm-offset-2">
+		Item
+	</div>
+	<div class="col-sm-3 col-lg-2">
+		Quantity
+	</div>
+	<div class="col-sm-3 col-lg-2">
+		Discount
+	</div>
+	<div class="col-sm-3 col-lg-2">
+		Item Total
+	</div>
+</div>
+{% for invoice in order.invoices %}
+	{% for shipment in invoice.shipments %}
+		{% for item in shipment.shipmentItems %}
+			{{ partial('shop-purchased-items', {'invoice': invoice, 'item': item, }) }}
+		{% endfor %}
+	{% endfor %}
+{% endfor %}

@@ -1,0 +1,62 @@
+{% set on_sale = product.onSale %}
+<div class="col-sm-6">
+	<div class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+		<h2 itemprop="price">
+			{% if on_sale %}
+				<small class="previous-price">{{ product.fullPrice|currency }}</small>
+			{% endif %}
+			{{ product.price|currency }}
+		</h2>
+		
+		{% if not product.isOutOfStock() %}
+		<link itemprop="availability" href="http://schema.org/InStock" />
+		{% else %}
+		<link itemprop="availability" href="http://schema.org/OutOfStock" />
+		{% endif %}
+	</div>
+	
+	{% if product.description %}
+	<div class="excerpt" itemprop="description">
+		{{ product.description|unescape }}
+	</div>
+	{% endif %}
+		
+	{{ partial('shop-product-attributes') }}
+			
+	{% if product.enabled %}
+			
+			{{ partial('shop-product-options') }}
+			
+		{% if not product.isOutOfStock() %}
+			<input type="hidden" name="productId" value="{{ product.id }}"/>
+			<div class="add-cart-holder form-group">
+				{{ flash() }}
+				<div class="quantity-selector">
+					<button class="quantity-btn minus btn btn-lg btn-default"><i class="fa fa-minus"></i></button>
+					<input class="form-control quantity" type="text" value="{{ quantity|default("1") }}" name="quantity"/>
+					<button class="quantity-btn plus btn btn-lg btn-default"><i class="fa fa-plus"></i></button>
+				</div>
+				<a class="btn btn-lg btn-danger btn-add-cart" href="#" data-ajax-handler="shop:onAddToCart" data-ajax-update="#mini-cart=shop-minicart, #product-page=shop-product, #navbar-totals=shop-minicart-totals">Add to Cart <i class="fa fa-shopping-cart"></i></a>
+			</div>
+			
+		{% else %}
+			<div class="not-available">
+				<h5>This product is temporarily unavailable</h5>
+			<div>
+		{% endif %}
+		
+	{% else %}
+		<div class="not-available">
+			<h5>This product is not available</h5>
+		<div>
+	{% endif %}
+	
+	<div id="sharrre" class="social-buttons">
+		<h6 class="share-title">share with your friends</h6>
+		<ul class="inline list-inline square-icons">
+			<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+			<li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+			<li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+		</ul>
+	</div>
+</div>

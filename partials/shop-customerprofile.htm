@@ -1,0 +1,178 @@
+{{ flash() }}
+{{ open_form({'data-ajax-handler': 'shop:onUpdateCustomerProfile', 'class': 'custom clearfix', 'data-ajax-update': "#profile-addresses=shop-customerprofile,#profile-changepassword=shop-changepassword", 'data-validation-message' : ''}) }}
+<input type="hidden" name="billing[id]" value="{{ billing.id }}" />
+{# <div class="panel"> #}
+	<h3 class="section-title">
+		<a data-toggle="collapse" class="collapsed" data-parent="#profile-addresses" href="#billing-info">
+		<span>Billing Address</span>
+		</a>
+	</h3>
+	
+	<div id="billing-info" class="panel-collapse collapse in">
+		<div class="panel-body row">
+		
+				<div class="col-sm-6 form-group">
+					<input name="billing[first_name]" id="first_name" type="text" class="text form-control" value="{{ billing.first_name }}"  placeholder="first name*"/>
+					<label for="first_name">First Name</label>
+					<span class="error"></span>
+				</div>
+				
+				<div class="col-sm-6 form-group">
+					<input name="billing[last_name]" id="last_name" type="text" class="text form-control" value="{{ billing.last_name }}" placeholder="last name*"/>
+					<label for="last_name">Last Name</label>
+					<span class="error"></span>
+				</div>
+				
+				<div class="col-sm-12 form-group">
+					<input name="billing[street_address]" id="billing_address" type="text" class="form-control" placeholder="street address*" value="{{ billing.street_address }}"/>
+					<label for="billing_address">Address</label>
+					<span class="error"></span>
+				</div>
+				
+				<div class="col-sm-6 form-group">
+					<input type="text" name="billing[city]" id="billing_city" value="{{ billing.city }}" class="form-control col-xs-12" placeholder="city*"/>
+					<label for="billing_city">City</label>
+					<span class="error"></span>
+				</div>
+				
+				<div class="col-sm-6 form-group">
+					<input type="text" id="billing_zip" name="billing[postal_code]" value="{{ billing.postal_code }}" class="form-control " placeholder="postcode/zip*"/>
+					<label for="billing_zip">Zip Code</label>
+					<span class="error"></span>
+				</div>
+				
+				<div class="col-sm-6 form-group">
+					<label for="billing_country" class="hide">Country</label>
+					<!-- 
+						The state selector updates automatically when the country changes. 
+						See app.js for the implementation details. 
+						-->        
+					<select id="billing_country" name="billing[shop_country_id]" data-state-selector="#billing_state" data-current-state="{{ billing.country.id }}" class="chzn-select form-control">
+					{% for country in countries %}
+					<option {{ option_state(billing.country.id, country.id) }} value="{{ country.id }}">{{ country.name }}</option>
+					{% endfor %}
+					</select>
+					<span class="error"></span>
+				</div>
+				
+				<div class="col-sm-6 form-group">
+					<label for="billing_state" class="hide">State</label>
+					<select class="chzn-select form-control" id="billing_state" name="billing[shop_state_id]" data-ajax-refresh > 
+					{{ partial('shop-stateoptions', {'states': billingStates, 'selected': billing.state.id}) }}
+					</select>
+					<span class="error"></span>
+				</div>
+
+				<div class="col-sm-6 form-group">
+					<input type="text" name="billing[email]" id="email" value="{{ customer.email }}" class="form-control" placeholder="Email*" />
+					<label for="email">Email</label>
+					<span class="error"></span>
+				</div>
+				
+				<div class="col-sm-6 form-group">
+					<input data-mirror type="text" name="billing[phone]" id="phone" value="{{ billing.phone }}" class="form-control" placeholder="phone number"/>
+					<label for="phone">Phone Number</label>
+					<span class="error"></span>
+				</div>
+			
+		</div> {# /panel-body #}
+	</div> {# /panel-collapse #}
+{# </div> #} {# /panel #}
+
+
+{# <div class="panel"> #}
+	<h3 class="section-title">
+		<a data-toggle="collapse" class="collapsed" data-parent="#profile-addresses" href="#shipping-info">
+		<span>Shipping Address</span>
+		</a>
+	</h3>
+	<div id="shipping-info" class="panel-collapse collapse in">
+		<div class="panel-body row">
+				<div class="col-xs-12  form-group">
+					<a class="btn btn-default" href="#" id="profile_billing_to_shipping"
+						data-ajax-handler="shop:onUpdateCustomerProfile"
+						data-ajax-update="#profile-addresses=shop-customerprofile"
+						data-validation-message=""
+						data-ajax-extra-fields="copy_billing_to_shipping='1'"
+						>Copy Billing Information</a>
+					<input type="hidden" name="shipping[id]" value="{{ shipping.id }}" />
+				</div>
+				
+				<div class="col-sm-6  form-group">
+					<input type="text" name="shipping[first_name]" id="shipping_first_name" value="{{ shipping.first_name }}" class="form-control  " placeholder="first name*"/>
+					<label for="shipping_first_name">First Name</label>
+					<span class="error"></span>
+				</div>
+				<div class="col-sm-6 form-group">
+					<input type="text" name="shipping[last_name]" id="shipping_last_name" value="{{ shipping.last_name }}" class="form-control" placeholder="last name*" />
+					<label for="shipping_last_name">Last Name</label>
+					<span class="error"></span>
+				</div>
+
+				<div class="col-sm-12 form-group">
+					<input name="shipping[street_address]" id="shipping_address" type="text" class="form-control" placeholder="street address*" value="{{ shipping.street_address }}"/>
+					<label for="shipping_address">Address</label>
+					<span class="error"></span>
+				</div>
+
+				<div class="col-sm-6 form-group">
+					<input type="text" name="shipping[city]" id="shipping_city" value="{{ shipping.city }}" class="form-control col-xs-12" placeholder="town*"/>
+					<label for="shipping_city">City</label>
+					<span class="error"></span>
+				</div>
+
+				<div class="col-sm-6 form-group">
+					<input type="text" name="shipping[postal_code]" id="shipping_zip" value="{{ shipping.postal_code }}" class="form-control " placeholder="postcode/zip*"/>
+					<label for="shipping_zip">Zip Code</label>
+					<span class="error"></span>
+				</div>
+				<div class="col-sm-6 form-group">
+					<label for="shipping_country" class="hide">Country</label>
+					<select class="chzn-select form-control" id="shipping_country" name="shipping[shop_country_id]" data-state-selector="#shipping_state" data-current-state="{{ shipping.country.id }}">
+					{% for country in countries %}
+					<option {{ option_state(shipping.country.id, country.id) }} value="{{ country.id }}">{{ country.name }}</option>
+					{% endfor %}
+					</select>
+					<span class="error"></span>
+				</div>
+				<div class="col-sm-6 form-group">
+					<label for="shipping_state" class="hide">State</label>
+					<select class="chzn-select form-control" id="shipping_state" name="shipping[shop_state_id]" data-ajax-refresh> 
+					{{ partial('shop-stateoptions', {'states': shippingStates, 'selected': shipping.state.id}) }}
+					</select>
+					<span class="error"></span>
+				</div>
+
+				<div class="col-sm-6 form-group">
+					<input type="text" name="shipping[phone]" id="shipping_phone" value="{{ shipping.phone }}" class="form-control" placeholder="phone number"/>
+					<label for="shipping_phone">Phone Number</label>
+					<span class="error"></span>
+				</div>
+			
+		</div> {# /panel-body #}
+	</div> {# /panel-collapse #}
+{# </div>  #} {# /panel #}
+
+<div class="col-xs-12 form-group">
+	<input type="submit" class="btn btn-primary pull-right" value="Save Address Information"/>
+	<input type="hidden" name="flash" value="Your profile has been successfully updated."/>
+	<input type="hidden" name="redirect" value="{{ root_url('/profile') }}"/>
+</div>
+</form>
+
+{# <div class="panel"> #}
+	<h3 class="section-title">
+		<a data-toggle="collapse" class="collapsed" data-parent="#profile-addresses" href="#password">
+		<span>Change Password</span>
+		</a>
+	</h3>
+	<div id="password" class="panel-collapse collapse in">
+		<div class="panel-body">
+		
+		<div id="profile-changepassword">
+			{{ partial('shop-changepassword') }}
+		</div>
+
+		</div>
+	</div>
+{# </div> #}

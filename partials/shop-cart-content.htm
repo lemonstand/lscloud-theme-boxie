@@ -1,0 +1,27 @@
+<div class="col-xs-12 col-md-9">
+	{{ flash() }}
+	<div class="items-holder">
+		
+		{{ partial('shop-cart-items', {'edit_cart': true}) }}
+
+	</div>
+		
+	<div id="cart-actions" class="btn-holder clearfix">
+		<a class="btn btn-default btn-update-cart pull-right" href="#" data-ajax-handler="shop:cart" data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart, #navbar-totals=shop-minicart-totals">Update Cart <i class="fa fa-refresh"></i></a>
+		<a class="btn btn-default btn-continue-shopping pull-left" href="{{ site_url('shop') }}" ><i class="fa fa-arrow-left"></i> Continue Shopping</a>
+	</div>	
+</div>
+
+<div class="col-xs-12 col-md-3">
+    <h3>Order Summary</h3>
+    <p class="h6">Shipping costs and taxes will be evaluated during checkout</p>
+    <ul class="price-list list-group">
+	    <li class="list-group-item">Subtotal: <span class="badge">{{ cart.getSubtotal()|currency }}</span></li>
+	    <li class="list-group-item important">Total: <span class="badge">{{ cart.getTotal()|currency }}</span></li>
+	</ul>
+	{% if customer %}
+    <a class="col-xs-12 btn btn-danger solid btn-lg" href="{{ site_url('/checkout') }}">Checkout</a>
+    {% else %}
+    <a class="col-xs-12 btn btn-danger solid btn-lg" href="{{ site_url('/checkout-start') }}">Checkout</a>
+    {% endif %}
+</div>

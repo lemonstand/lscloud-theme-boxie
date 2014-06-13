@@ -1,0 +1,33 @@
+<div class="cart-item row">
+	<div class="col-xs-12 col-sm-2">
+		<div class="product-thumb">
+			<img class="img-responsive" alt="{{ item.product.name }}" src="{{ item.product.images.first.thumbnail(129, 129)|default('http://placehold.it/129x129') }}" /> 
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-4 cart-details">
+		<div class="h4 product-title">
+			<a href="/product/{{ item.product.url_name }}">{{ item.product.name }}</a>
+			<small class="unit-price">
+				{{ item.pivot.price|currency }}
+			</small>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-2 {{ edit_cart ? null : 'no-edit' }}">
+		<div class="h3 quantity">
+			{{ item.quantity|number_format(0) }}
+			
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-2 cart-details {{ edit_cart ? null : 'no-edit' }}">
+		<div class="h6 quantity">
+			{{ 0|currency }}
+			
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-2 cart-details">
+		<div class="h4 total-price">
+			{{ (item.quantity *item.pivot.price)|currency }}
+		</div>
+		
+	</div>
+</div>

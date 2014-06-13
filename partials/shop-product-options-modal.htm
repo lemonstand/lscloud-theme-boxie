@@ -1,0 +1,24 @@
+<div class="modal-dialog modal-lg">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h4 class="modal-title" id="product-options-modalLabel">{{ product.name }} 
+				<small>
+					- {% if on_sale %}
+					<span class="previous-price">{{ product.fullPrice|currency }}</span>
+					{% endif %}
+					<span>{{ product.price|currency }}</span>
+				</small>
+			</h4>
+		</div>
+		<div class="modal-body">
+			{{ partial('shop-product-gallery', { 'product': product }) }}
+			{{ partial('shop-product-options', { 'product': product }) }}
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			<input type="hidden" name="productId" value="{{ product.id }}"/>
+			<a class="btn btn-danger btn-add-cart" href="#" data-dismiss="modal" data-ajax-handler="shop:onAddToCart" data-ajax-update="#mini-cart=shop-minicart, #navbar-totals=shop-minicart-totals, #product-page=shop-product">Add to Cart</a>
+		</div>
+	</div>
+</div>

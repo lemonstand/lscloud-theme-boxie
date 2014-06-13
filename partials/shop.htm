@@ -1,0 +1,19 @@
+<section id="shop" class="page-section row">
+		<div class="col-xs-12 col-sm-3">
+			<div class="sidebar">
+				{{ partial('shop-categories', { 'products': products }) }}
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-9">
+			{% if category_page and not category %}
+				<h2>Category not found</h2>
+				<p>We are sorry, the requested category was not found.</p>
+				{% else %}
+				<div id="product-list">
+					{{ partial('shop-product-loop', { 'items_per_page': items_per_page }) }}
+				</div>
+			{% endif %}
+		</div>
+</section>
+
+{{ partial('shop-product-quick-view') }}

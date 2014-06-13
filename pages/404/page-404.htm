@@ -1,0 +1,32 @@
+---
+description: '"Page not found" page, displayed when a non existing page is accessed.'
+template: inner
+protocol: all
+published: true
+title: '404'
+name: 'Page not found'
+url: /404
+---
+<div id="banner" class="jumbotron row">
+	<h1>404 - Page not found!</h1>
+</div>
+<section class="page-section row">
+    <div class="col-xs-12 col-sm-3">
+			<div class="sidebar">
+				{{ partial('shop-categories', { 'products': products }) }}
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-9">
+			<p class="lead">The page you are trying to reach may have been moved, deleted or does not exist.</p>
+			<p class="">Try searching below, or head back to the <a href="/">homepage</a> to see if you can find what you are looking for from there.</p>
+			
+			{{ open_form({'id': 'search-form-404', 'role': 'form', 'method': 'get', 'action': site_url('search')}) }}								
+			<div class="input-group">
+				<input type="text" class="search-form form-control" name="query" id="query" placeholder="Type your search term here" autocomplete="off" value="{{query|unescape}}">
+				<span class="input-group-btn">
+					<button class="btn btn-lg search-btn" type="submit"><i class="fa fa-search"></i></button>
+				</span>
+			</div><!-- /input-group -->
+			{{ close_form() }}
+		</div>
+</section>

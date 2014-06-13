@@ -1,0 +1,39 @@
+---
+action: 'shop:category'
+template: inner
+protocol: all
+published: true
+name: Category
+url: '/category/:urlName@/:page?'
+---
+{% if not category %}
+	<div id="banner" class="jumbotron row">
+	<h1>Category not found</h1>
+	<p>We are sorry, the requested category was not found.</p>
+</div>
+<section class="page-section row">
+    <div class="col-xs-12 col-sm-3">
+			<div class="sidebar">
+				{{ partial('shop-categories', { 'products': products }) }}
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-9">
+			<p class="lead">The category you are trying to reach may have been deleted or does not exist.</p>
+			<p class="">Try searching below, or head back to the <a href="/">homepage</a> to see if you can find what you are looking for from there.</p>
+			
+			{{ open_form({'id': 'search-form-404', 'role': 'form', 'method': 'get', 'action': site_url('search')}) }}								
+			<div class="input-group">
+				<input type="text" class="search-form form-control" name="query" id="query" placeholder="Type your search term here" autocomplete="off" value="{{query|unescape}}">
+				<span class="input-group-btn">
+					<button class="btn btn-lg search-btn" type="submit"><i class="fa fa-search"></i></button>
+				</span>
+			</div><!-- /input-group -->
+			{{ close_form() }}
+		</div>
+</section>
+{% else %}
+<div id="banner" class="jumbotron row">
+	<h1>{{ category.name }}</h1>
+</div>
+{{ partial('shop', { 'product': product }) }}
+{% endif %}

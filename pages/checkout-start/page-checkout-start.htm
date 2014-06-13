@@ -1,0 +1,46 @@
+---
+action: 'shop:login'
+template: inner
+protocol: all
+published: true
+name: Checkout
+url: /checkout-start
+---
+<div id="banner" class="jumbotron row">
+	
+	<h1>Checkout Sign-In</h1>
+
+</div>
+<section class="page-section row">
+	<div class="col-split-2">
+		<div class="col-xs-12 col-sm-6 col-md-4 col-md-offset-1">
+			{{ open_form({'data-ajax-handler': 'shop:onLogin'}) }}
+				<h2>Returning Customers</h2>
+				<p>If you already have an account, please sign in here before checking out.</p>
+				
+				<div class="form-group">
+					<input name="email" class="form-control" placeholder="e-mail" value="{{ post('email') }}" />
+				</div>
+				<div class="form-group">
+					<input type="password" name="password" class="form-control" placeholder="password" />
+				</div>
+				<div class="clearfix form-group">
+					<a class="btn btn-default pull-left" href="{{ site_url('/password-restore') }}">forgot your password?</a>
+					<button class="btn btn-primary pull-right" type="submit">Login <i class="fa fa-lock"></i></button>
+				</div>
+				
+				<input type="hidden" name="redirect" value="{{ site_url('/checkout') }}"/>
+			{{ close_form() }}
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-4 col-md-offset-2">
+				<h2>Guest Checkout</h2>
+				<p>Checkout without logging in or registering an account.</p>
+				<a class="btn btn-primary" href="{{ site_url('checkout') }}">Continue as Guest <i class="fa fa-arrow-right"></i></a>
+				
+				<br><br>
+				<h2>Register Account</h2>
+				<p>Register a new account to save your order history.</p>
+				<a class="btn btn-default" href="{{ site_url('/login') }}">Register Now</a>
+		</div>
+	</div>
+</section>

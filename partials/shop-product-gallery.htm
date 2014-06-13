@@ -1,0 +1,45 @@
+<div class="col-xs-12 col-sm-6">
+	{% if product.images.count > 1 %}
+	<div id="product-gallery" class="carousel slide" data-ride="carousel" data-interval="false">
+		
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner">
+			{% for image in product.images %}
+			<div class="item {{ loop.index == 1 ? 'active' : null }}" id="slide{{loop.index}}">
+				<div data-lg="{{ image.thumbnail(1270, 'auto') }}" class="product-img-zoom">
+					<img class="img-responsive" alt="{{ image.title }}" src="{{ image.thumbnail(610, 'auto') }}" itemprop="image"/>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		
+		<!-- Indicators -->
+		<ol class="gallery-thumbs list-inline">
+			{% for image in product.images %}					
+			<li data-target="#product-gallery" data-slide-to="{{loop.index - 1}}" class="{{ loop.index == 1 ? 'active' : null }}">
+				<img class="product-thumb img-responsive" alt="{{ image.title }}" src="{{ image.thumbnail(75, 75) }}" />
+			</li>
+			{% endfor %}
+		</ol>
+		
+	</div>
+	{% else %}
+		<div data-lg="{{ product.image.thumbnail(1270, 'auto') }}" class="product-img-zoom">
+			<img class="product-img img-responsive" alt="{{ product.image.title }}" src="{{ product.image.thumbnail(610, 'auto') }}" itemprop="image"/>
+		</div>
+	{% endif %}
+</div>
+
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="img-modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4></h4>
+      </div>
+      <div class="modal-body">
+        <img class="img-responsive" />
+      </div>
+    </div>
+  </div>
+</div>

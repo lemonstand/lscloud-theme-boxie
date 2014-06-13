@@ -1,0 +1,19 @@
+---
+template: home
+protocol: all
+published: true
+name: Registered
+url: /registered
+---
+<div id="banner" class="jumbotron row">
+	<h1>Registration</h1>
+</div>
+<section class="page-section">
+    {% if customer %}
+        <h2>Thank you for registering!</h2>
+        <h3>A confirmation email has been sent to your email address.</h3>
+        <p>You have been automatically logged in.</p>
+    {% else %}
+        <p class="h6">Please <a href="{{ root_url('/login') }}">sign in</a> using your email and password.</p>
+    {% endif %}
+</section>

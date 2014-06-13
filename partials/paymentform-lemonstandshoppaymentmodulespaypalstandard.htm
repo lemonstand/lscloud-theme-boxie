@@ -1,0 +1,26 @@
+---
+description: 'Payment form partial for PayPal Standard payment method'
+---
+{% if payment %}
+<form method="post" action="{{ paymentMethod.getPaymentModuleObj().getFormAction(paymentMethod) }}">
+
+    {% set hiddenFields = paymentMethod.getPaymentModuleObj().getHiddenFields(paymentMethod, payment) %}
+    {% for field, value in hiddenFields %}
+        <input type="hidden" value="{{ value }}" name="{{ field }}">
+    {% endfor %}
+    <button type="submit" class="btn btn-primary btn-lg btn-checkout-step pull-right">Pay with PayPal</button>
+</form>
+{% else %}
+    <form method="post" action="" data-ajax-handler="shop:onPay">
+        <input type="hidden" value="{{ paymentMethod.id }}" name="payment_method_id">
+        <div class="row field-row">
+		    <div class="col-xs-12 button-holder">
+	        	<a class="btn btn-default btn-lg btn-checkout-step pull-left" href="#" 
+        data-ajax-handler="shop:checkout" 
+        data-ajax-update="#checkout-page=shop-checkout, #checkout-progress=shop-checkout-progress, #mini-cart=shop-minicart"
+        data-ajax-extra-fields="nextStep=shipping_method"><i class="fa fa-arrow-left"></i> Previous Step</a>
+	        	<button type="submit" class="btn btn-danger solid btn-lg btn-checkout-step pull-right">Pay Now <i class="fa fa-money"></i></button>
+			</div>
+        </div>
+    </form>
+{% endif %}

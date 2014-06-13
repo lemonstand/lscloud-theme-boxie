@@ -1,0 +1,6 @@
+<span class="hidden-xs">{{ cart.getItemNum() }} Item{{ cart.getItemNum == 0 or cart.getItemNum > 1 ? 's' : null }}</span>
+<span class="visible-lg">{{ cart.getSubtotal()|currency }}</span>
+
+{% if cart.getItemNum > 0 %}
+	<span class="visible-xs item-number">{{ cart.getItemNum() }}</span>
+{% endif %}

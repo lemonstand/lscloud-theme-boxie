@@ -1,0 +1,12 @@
+<h4>Categories</h4> 
+{% set active_cat = category.id %}
+{% tree categories %}
+<ul class="list-unstyled {% if tree.topLevel %} categories-group {% else %} sub-category {% endif %}">
+    {% for category in tree.items %}
+        <li>
+            <a href="/category/{{ category.fullUrlName }}" class="{{ category.id == active_cat ? 'active' : null }}"><span class="badge">{{ category.products.count }}</span>{{ category.name }}</a>
+            {% branch category.children %}
+        </li>
+    {% endfor %}
+</ul>
+{% endtree %}

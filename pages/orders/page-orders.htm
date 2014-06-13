@@ -1,0 +1,39 @@
+---
+action: 'shop:orders'
+template: inner
+protocol: all
+published: true
+name: Orders
+url: /orders
+---
+<div id="banner" class="jumbotron row">
+	<h1>My Orders</h1>
+</div>
+<section class="page-section">
+    {% if not orders or not orders.count %}
+      	<h4 class="flash info">Orders not found</p>
+    {% else %}
+
+		<table class="table table-bordered table-striped">
+		  <thead>
+		  <tr>
+		    <th class="h6">Order #</th>
+		    <th class="h6">Date</th>
+		    <th class="h6">Status</th>
+		    <th class="h6">Total</th>
+		  </tr>
+		  </thead>
+		  <tbody>
+		  {% for order in orders %}
+		    {% set url = root_url('/order/'~order.id) %}
+		    <tr>
+		      <td><a href="{{ url }}">{{ order.id }}</a></a></td>
+		      <td><a href="{{ url }}">{{ order.created_at.format('M jS, Y') }}</a></td>
+		      <td><a href="{{ url }}">{{ order.orderStatus.name }}</a></td>
+		      <td><a href="{{ url }}"><i>{{ order.total|currency }}</i></a></td>
+		    </tr>
+		  {% endfor %}
+		  </tbody>
+		</table>
+    {% endif %}
+</section>

@@ -1,0 +1,19 @@
+{% set items_per_page = post('items_per_page')|default(12) %}
+{% paginate products by items_per_page %}
+<div class="product-grid">
+	<div id="" class="row">
+		{% for product in pagination.items %}
+		<div class="col-xs-12 col-sm-6 col-md-4 product-holder">
+			{{ partial('shop-grid-item', { 'product': product }) }}
+		</div>
+		{% else %}
+		<div class="col-xs-12">
+			<h2 class="empty">Sorry, there are no products matching your request.</h2>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+<div class="pagination-holder">
+	{% navigation %}
+</div>
+{% endpaginate %}

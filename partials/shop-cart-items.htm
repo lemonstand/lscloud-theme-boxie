@@ -1,0 +1,59 @@
+<div class="cart-labels clearfix hidden-xs">
+	<div class="col-sm-4 col-sm-offset-2 col-lg-5">
+		Item
+	</div>
+	<div class="col-sm-3 col-lg-2">
+		Quantity
+	</div>
+	<div class="col-sm-3 col-lg-3">
+		Item Total
+	</div>
+</div>
+
+{% for item in items %}
+<div class="cart-item row">
+	<div class="col-xs-12 col-sm-2">
+		<div class="product-thumb">
+			<img class="img-responsive" alt="{{ item.product.name }}" src="{{ item.product.images.first.thumbnail(129, 129)|default('http://placehold.it/129x129') }}" /> 
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-4 col-lg-5 cart-details">
+		<div class="h4 product-title">
+			<a href="/product/{{ item.product.url_name }}">{{ item.product.name }}</a>
+			<p><small class="unit-price">
+				{{ item.product.price|currency }}
+			</small></p>
+		</div>
+        {% set options = item.optionsString() %}
+        {% if options %}
+            <p class="h6">{{ options|unescape }}</p>
+        {% endif %}
+	</div>
+	<div class="col-xs-12 col-sm-3 col-lg-2 {{ edit_cart ? 'cart-details' : null }} {{ edit_cart ? null : 'no-edit' }}">
+		<div class="quantity">
+			{%if edit_cart %}
+				<div class="quantity-selector">
+					<button class="quantity-btn minus btn btn-lg btn-default"><i class="fa fa-minus"></i></button>
+					<input type="text" name="item_quantity[{{ item.key }}]" class="form-control quantity" value="{{ item.quantity }}">
+					<button class="quantity-btn plus btn btn-lg btn-default"><i class="fa fa-plus"></i></button>
+				</div>
+		    	
+		    {% else %}
+		   		<div class="h3">{{ item.quantity }}</div>
+		    {% endif %}
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-3 col-lg-3 cart-details">
+		<div class="h4 total-price">
+			{{ item.total()|currency }}
+		</div>
+		{%if edit_cart %}
+			<a class="remove-item" href="#close" 
+			data-ajax-handler="shop:cart" 
+			{# data-ajax-confirm="Do you really want to remove this item from the cart?" #}
+			data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart, #navbar-totals=shop-minicart-totals"
+			data-ajax-extra-fields="delete_item='{{ item.key }}'"><i class="fa fa-times"></i></a>
+		{% endif %}
+	</div>
+</div>
+{% endfor %}

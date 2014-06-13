@@ -1,0 +1,50 @@
+---
+description: 'Payment form partial for Stripe Payments payment method'
+---
+<form method="post" action="" data-ajax-handler="shop:onPay">
+    <input type="hidden" value="{{ paymentMethod.id}}" name="payment_method_id">
+    <div class="form row">
+        <div class="col-sm-6 form-group text left">
+            
+            <input autocomplete="off" name="firstName" value="" id="firstName" type="text" class="text form-control" placeholder="Cardholder First Name"/>
+            <label for="FIRSTNAME">Cardholder First Name</label>
+        </div>
+        <div class="col-sm-6 form-group text right">
+            
+            <input autocomplete="off" name="lastName" value="" id="LASTNAME" type="text" class="text form-control" placeholder="Cardholder Last Name"/>
+            <label for="LASTNAME">Cardholder Last Name</label>
+        </div>
+    
+        <div class="col-sm-6 form-group text">
+            
+            <input autocomplete="off" name="cardNumber" value="" id="cardNumber" type="text" class="text form-control credit-card-input" placeholder="Credit Card Number"/>
+            <label for="ACCT">Credit Card Number</label>
+        </div>
+        
+        <div class="col-sm-6 form-group text helper">
+        	
+            <input autocomplete="off" name="securityCode" value="" id="securityCode" type="text" class="text form-control" placeholder="CVV2"/>
+            <label for="CVV2">CVV2</label>
+            <i class="fa fa-question" data-container="body" data-toggle="popover" data-placement="top" data-content="For MasterCard, Visa, and Discover, the CSC is the last three digits in the signature area on the back of your card. For American Express, it's the four digits on the front of the card."></i>
+        </div>
+    
+        <div class="col-sm-6 form-group select left">
+           
+            <input type="text" name="expiryMonth" id="EXPDATE_MONTH" class="form-control" placeholder="Expiration Date - Month">
+            <label for="EXPDATE_MONTH">Expiration Date - Month</label>
+        </div>
+        <div class="col-sm-6 form-group text right">
+           
+            <input type="text" name="expiryYear" id="EXPDATE_YEAR" class="form-control" placeholder="Expiration Date - Year">
+            <label for="EXPDATE_YEAR">Expiration Date - Year</label>
+        </div>        
+    </div>
+    
+    <div class="clearfix">
+    	<a class="btn btn-default btn-lg btn-checkout-step pull-left" href="#" 
+        data-ajax-handler="shop:checkout" 
+        data-ajax-update="#checkout-page=shop-checkout, #checkout-progress=shop-checkout-progress, #mini-cart=shop-minicart"
+        data-ajax-extra-fields="nextStep=shipping_method"><i class="fa fa-arrow-left"></i> Previous Step</a>
+    	<button type="submit" class="btn btn-danger solid btn-lg btn-checkout-step pull-right">Pay Now <i class="fa fa-money"></i></button>
+	</div>
+</form>

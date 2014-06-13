@@ -1,0 +1,42 @@
+{% if cart %}
+	<h2>Your Order</h2>
+	<div id="cart-content">
+		{{ partial('shop-cart-items') }}
+	</div>
+	{% if order.payment_processed %}
+		<p class="flash info"><strong>Thank you!</strong> The payment is already processed for this order.</p>
+		{% else %}
+		
+		<h2>Payment Method</h2>
+		<!-- 
+			The payment form below (id="payment_form") automatically updates when
+			the payment method is changed. See app.js for the implementation details. 
+			-->
+		{#
+{{ open_form({'class': 'custom'}) }}
+		<div class="form-group">
+			<select class="form-control" name="paymentMethodId" id="payment_method">
+				<option value=''> - </option>
+				{% for method in paymentMethods %}
+				<option value="{{ method.id }}">{{ method.name }}</option>
+				{% endfor %}
+			</select>
+		</div>
+		</form>
+#}
+		
+		<!-- The payment method radio button clicks are handled in the main.js -->
+		<div id="payment_method" class="form-group">
+			{{ open_form({'class': 'custom'}) }}
+			{% for method in paymentMethods %}			
+				<input class="custom-radio" name="paymentMethodId" value="{{ method.id }}" type="radio" id="payment-method{{ method.id }}" />
+				<label for="payment-method{{ method.id }}" class="choice-title h6">{{ method.name }}</label>
+			{% endfor %}
+			</form>
+		</div>
+		
+		<div id="payment_form">{{ partial('shop-paymentform') }}</div>
+	{% endif %}
+{% else %}
+	<p class="flash error">Order not found.</p>
+{% endif %}

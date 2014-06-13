@@ -1,0 +1,46 @@
+---
+action: 'shop:receipt'
+template: inner
+protocol: all
+published: true
+name: Receipt
+url: '/receipt/:paymenthash'
+---
+<div id="banner" class="jumbotron row">
+	<h1>Your Receipt</h1>
+	<p>Please keep this information for your records.</p>
+</div>
+<section id="receipt" class="page-section row">
+{% if invoice %}
+		<div class="col-md-12 col-lg-9">
+			<div id="cart-content">
+				{{ partial('shop-invoiceitems') }}
+			</div>
+		</div>
+	{% if invoice.isPaid() %}
+		<div class="col-md-12 col-lg-3">
+			<table class="table table-bordered">
+				<tr>
+					<td>Order number:</td> <td>#{{ invoice.order.number }}</td>
+				</tr>
+				<tr>
+					<td>Payment method:</td> <td>{{ payment.guessPaymentMethod().name }}</td>
+				</tr>
+				<tr>
+					<td>Order Date:</td> <td>{{ invoice.order.created_at.format('M jS, Y') }}</td>
+				</tr>
+			</table>
+
+			{{ partial('shop-invoicetotals') }}
+			<a class="btn btn-default" href="{{ site_url('shop') }}">Continue Shopping <i class="fa fa-arrow-right"></i></a>
+		</div>
+			
+	{% else %}
+		<p><a class="md-button button" href="{{ site_url('review/'~order.order_hash) }}">Pay the order</a></p>
+	{% endif %}
+{% else %}
+		<div class="col-md-12 col-lg-9">
+			<p class="flash error">Invoice not found.</p>
+		</div>
+{% endif %}
+</section>

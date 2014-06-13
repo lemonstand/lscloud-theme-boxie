@@ -1,0 +1,35 @@
+{% if step == 'billing_info' %}
+    
+   
+    <ul class="breadcrumb list-inline checkout-progress">
+      <li class="active">1. Billing Address</li>
+      <li>2. Shipping Method</li>
+      <li>3. Pay</li>
+    </ul>
+
+{% elseif step == 'shipping_method' %}
+
+    <ul class="breadcrumb list-inline checkout-progress">
+      <li class="active"><a href="#" 
+        data-ajax-handler="shop:checkout" 
+        data-ajax-update="#checkout-page=shop-checkout, #checkout-progress=shop-checkout-progress, #mini-cart=shop-minicart"
+        data-ajax-extra-fields="nextStep=billing_info">1. Billing Address</a></li>
+      <li class="active">2. Shipping Method</li>
+      <li>3. Pay</li>
+    </ul>
+
+{% elseif step == 'pay' %}
+
+    <ul class="breadcrumb list-inline checkout-progress">
+      <li class="active"><a href="#" 
+        data-ajax-handler="shop:checkout" 
+        data-ajax-update="#checkout-page=shop-checkout, #checkout-progress=shop-checkout-progress, #mini-cart=shop-minicart"
+        data-ajax-extra-fields="nextStep=billing_info">1. Billing Address</a></li>
+      <li class="active"><a href="#" 
+        data-ajax-handler="shop:checkout" 
+        data-ajax-update="#checkout-page=shop-checkout, #checkout-progress=shop-checkout-progress, #mini-cart=shop-minicart"
+        data-ajax-extra-fields="nextStep=shipping_method">2. Shipping Method</a></li>
+      <li class="active">3. Pay</li>
+    </ul>
+
+{% endif %}

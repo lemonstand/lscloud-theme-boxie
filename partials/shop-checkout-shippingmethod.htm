@@ -1,0 +1,49 @@
+{{ open_form({'class': 'custom'}) }}
+    <h2>Shipping Method</h2>
+
+      {% if shippingOptions %}
+        <input type="hidden" value="" name="shippingMethod">
+        <table class="table table-bordered" id="shipping-methods">
+          {% for index, option in shippingOptions %}
+            <tr>
+              <td>
+                  <!-- The shipping method radio button clicks are handled in the main.js -->
+                  <input class="custom-radio" name="shippingMethod" 
+                    {{ option.error_hint ? 'disabled' : null }} 
+                    value="{{ index }}" 
+                    {{ radio_state(option.shippingMethodId, shippingMethod) }}
+                    type="radio" id="{{ 'option'~index }}" />
+                    
+                  <label for="{{ 'option'~index }}" class="choice-title h6">
+                    {{ option.shippingMethodName }}
+                    {% if option.shippingServiceName %}: {{ option.shippingServiceName }}{% endif %}
+                  </label>
+                  
+                  {% if option.error_hint %}
+                    <span class="choice-description error-hint">{{ option.error_hint }}</span>
+                  {% endif %}
+              </td>
+              <td class="narrow">
+                <span class="h3">{% if not option.error_hint  %}
+                  {{ not option.is_free ? option.quote|currency : 'free' }}
+                {% endif %}</span>
+              </td>
+            </tr>
+          {% endfor %}
+        </table>  
+      {% else %}
+        <p>We are sorry, there are no shipping options available for your location.</p>
+      {% endif %}
+
+	{% if shippingOptions %}
+	<div class="clearfix">
+		<a class="btn btn-default btn-lg btn-checkout-step pull-left" href="#" 
+        data-ajax-handler="shop:checkout" 
+        data-ajax-update="#checkout-page=shop-checkout, #checkout-progress=shop-checkout-progress, #mini-cart=shop-minicart"
+        data-ajax-extra-fields="nextStep=billing_info"><i class="fa fa-arrow-left"></i> Previous Step</a>
+		<a class="btn btn-primary btn-lg btn-checkout-step pull-right" href="#" data-ajax-handler="shop:checkout" data-ajax-update="#checkout-page=shop-checkout, #checkout-progress=shop-checkout-progress, #mini-cart=shop-minicart">Next Step <i class="fa fa-arrow-right"></i></a>
+	</div>
+	{% endif %}
+	<input type="hidden" name="step" value="shipping_method,review"/>
+	<input type="hidden" name="nextStep" value="pay" />
+{{ close_form }}

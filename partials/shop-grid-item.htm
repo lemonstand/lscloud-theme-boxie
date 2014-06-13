@@ -1,0 +1,43 @@
+{% set on_sale = product.onSale %}
+{{ open_form({'class': 'custom', 'onsubmit': 'return false'}) }}
+<div class="product-item text-center">
+	<a class="product-img" href="/product/{{ product.url_name }}">
+		<img class="img-responsive" src="{{ product.image.thumbnail(400, 300) }}" alt="{{ product.name }}" />
+	</a>
+	<h3 class="product-title">
+		<a href="/product/{{ product.url_name }}">{{ product.name }}</a>
+	</h3>
+	<div class="h4 product-price">
+		{% if on_sale %}
+		<span class="previous-price">{{ product.fullPrice|currency }}</span>
+		<div class="sale-tag">
+			Sale!
+		</div>
+		{% endif %}
+		<span>{{ product.price|currency }}</span>
+	</div>
+	<div class="buttons-holder">
+			<a class="btn btn-default btn-quick-view hidden-xs" rel="tooltip" title="Quick View" href="/product/{{ product.url_name }}"><i class="fa fa-eye"></i></a>
+		{% if not product.options.count %}
+			{# uncomment for product options modal #}
+			{#
+<button class="btn btn-danger btn-options" data-toggle="modal" data-target="#product-options-modal">Select Options</button>
+		{% else %}
+#}
+			<input type="hidden" name="productId" value="{{ product.id }}"/>
+			<a class="btn btn-danger btn-add-cart" href="#" data-ajax-handler="shop:onAddToCart" data-ajax-update="#mini-cart=shop-minicart, #navbar-totals=shop-minicart-totals, #product-page=shop-product">Add to Cart</a>
+		{% endif %}
+	</div>
+</div>
+
+{# uncomment for product options modal #}
+{#
+{% if product.options.count %}
+<div class="modal fade" id="product-options-modal" tabindex="-1" role="dialog" aria-labelledby="product-options-modalLabel" aria-hidden="true">
+	{{ partial('shop-product-options-modal', { 'product': product }) }}
+</div>
+{% endif %}
+#}
+
+{{ close_form() }}
+

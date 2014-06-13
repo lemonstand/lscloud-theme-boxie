@@ -1,0 +1,42 @@
+---
+action: 'shop:order'
+template: inner
+published: true
+name: Order
+url: '/order/:orderId'
+---
+<div id="banner" class="jumbotron row">
+	<h1>Order #{{ order.id }}</h1>
+</div>
+<section id="order" class="page-section row">
+	{% if order %}
+		<div class="col-md-12 col-lg-9">
+			<div id="cart-content">
+				{{ partial('shop-orderitems') }}
+			</div>
+			<a href="{{ site_url('orders') }}" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back to History</a>
+		</div>
+		<div class="col-md-12 col-lg-3">
+				<table class="table table-bordered">
+				{% if order.invoices[0].payments().last().guessPaymentMethod() %}
+				<tr>
+					<td><strong>Payment method: </strong> </td> <td>{{ order.invoices[0].payments().last().guessPaymentMethod().name }}</td>
+				</tr>
+				{% endif %}
+				<tr>
+					<td><strong>Order Date: </strong> </td> <td>{{ order.created_at.format('M jS, Y') }}</td>
+				</tr>
+				</table>
+				{{ partial('shop-ordertotals') }}
+				
+				{% if order.payment_method.has_payment_form() and not order.payment_processed() %}
+				<a class="btn btn-primary" href="{{ root_url('/review/'~order.order_hash) }}">Pay the order</a>
+				{% endif %}
+		</div>
+	{% else %}
+	<div class="col-xs-12">
+		<p class="flash error">Order not found</p>
+		<a href="{{ site_url('orders') }}" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back to History</a>
+	</div>
+	{% endif %}
+</section>

@@ -1,0 +1,12 @@
+---
+action: 'shop:products'
+template: inner
+protocol: all
+published: true
+name: Shop
+url: '/shop/:page?'
+---
+<div id="banner" class="jumbotron row">
+	<h1>All Products</h1>
+</div>
+{{ partial('shop', { 'product': product, 'products': products }) }}

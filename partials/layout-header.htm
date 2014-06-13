@@ -1,0 +1,91 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="{{ site_url('/') }}"><i class="fa fa-cube"></i> Boxie!</a>
+		</div>
+		
+		<div class="navbar-right navbar-utils">
+			<ul class="list-unstyled clearfix">
+				<li class="hidden-xs">
+					{% if customer %}
+					{# Welcome, {{ customer.first_name }}! #}
+					<a href="{{ site_url('logout') }}" class="btn"><span>Log Out</span> <i class="fa fa-unlock-alt"></i></a>
+					{% else %}
+					<a href="{{ site_url('login') }}" class="btn"><span>Log In</span> <i class="fa fa-lock"></i></a>
+					{% endif %}
+				</li>
+				<li id="navbar-totals" class="totals">
+					{{ partial('shop-minicart-totals') }}
+				</li>
+				<li class="dropdown">
+					<a href="#" data-toggle="dropdown" class="btn btn-primary cart-btn">
+						<i class="fa fa-shopping-cart"></i>
+					</a>
+					<div id="mini-cart" class="dropdown-menu">
+						{{ partial('shop-minicart', {'edit_cart': true}) }}
+					</div>
+				</li>
+			</ul>								
+		</div>
+		
+		<div class="navbar-collapse collapse">
+			<div class="navbar-left">
+				{% set active_page = globals.active_page|default('home') %}
+				<ul id="main-nav" class="nav navbar-nav">
+					<li class="{{ categories.count ? 'dropdown' : null }} {{ active_page == 'shop' ? 'active' : null }}">
+						<a class="dropdown-toggle" {{ categories.count ? 'data-toggle="dropdown"' : null }} id="shop-dropdown" href="{{ site_url('shop') }}">
+							Shop {{ categories.count ? '<b class="caret">' : null }}</b>
+						</a>
+						{% if categories.count %}
+						<ul class="dropdown-menu" role="menu" aria-labelledby="shop-dropdown">
+							<li role="presentation">
+								<a href="{{ site_url('shop') }}">All Products</a>
+							</li>
+							{% tree categories %}
+							{% for category in tree.items %}
+							<li role="presentation">
+								<a role="menuitem" tabindex="-1" href="/category/{{ category.fullUrlName }}">{{ category.name }}</a>
+							</li>
+							{% endfor %}
+							{% endtree %}
+						</ul>
+						{% endif %}
+					</li>
+					{% if customer %}
+					<li class="{{ active_page == 'orders' ? 'active' : null }}"><a href="{{ site_url('orders') }}">My Orders</a></li>
+					<li class="{{ active_page == 'profile' ? 'active' : null }}"><a href="{{ site_url('profile') }}">My Profile</a></li>
+					{% endif %}
+					<li class="{{ active_page == 'about' ? 'active' : null }}"><a href="{{ site_url('about') }}">About</a></li>
+					<li class="{{ active_page == 'contact' ? 'active' : null }}"><a href="{{ site_url('contact') }}">Contact</a></li>
+					<li class="visible-xs col-xs-12">
+						{% if customer %}
+						{# Welcome, {{ customer.first_name }}! #}
+						<a href="{{ site_url('logout') }}" class="btn btn-default">Logout <i class="fa fa-unlock-alt"></i></a>
+						{% else %}
+						<a href="{{ site_url('login') }}" class="btn btn-default">Login <i class="fa fa-lock"></i></a>
+						{% endif %}
+					</li>
+				</ul>
+			</div>	
+			
+					
+			{{ open_form({'id': 'search-form', 'class': 'navbar-form', 'role': 'form', 'method': 'get', 'action': site_url('search')}) }}								
+			<div class="input-group">
+				<input type="text" class="search-form form-control" name="query" id="query" placeholder="Type your search term and press Enter" autocomplete="off" value="{{query|unescape}}">
+				<span class="input-group-btn">
+					<button class="btn search-btn toggle hidden-xs hidden-sm" type="button"><i class="fa fa-search"></i></button>
+					<button class="btn search-btn hidden-md hidden-lg" type="submit"><i class="fa fa-search"></i></button>
+				</span>
+			</div><!-- /input-group -->
+			{{ close_form() }}
+				
+		</div>
+		<!--/.navbar-collapse -->
+	</div>
+</nav>

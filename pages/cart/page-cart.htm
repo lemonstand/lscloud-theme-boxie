@@ -1,0 +1,19 @@
+---
+action: 'shop:cart'
+template: inner
+protocol: all
+published: true
+name: Cart
+url: /cart
+---
+<div id="banner" class="jumbotron row">
+	
+	<h1>Shopping Cart</h1>
+
+</div>
+
+<section id="cart" class="page-section row">
+	{{ open_form({'class': 'custom'}) }}
+		<div id="cart-content">{{ partial('shop-cart-content') }}</div>
+	{{ close_form() }}	
+</section>

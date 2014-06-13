@@ -1,0 +1,59 @@
+---
+description: 'Payment form partial for Authorize.Net AIM payment method'
+---
+<form method="post" action="" data-ajax-handler="shop:onPay">
+    <input type="hidden" value="{{  paymentMethod.id}}" name="payment_method_id">
+    <div class="form">
+    	<div class="row">
+	        <div class="col-sm-6 form-group">
+	            
+	            <input autocomplete="off" name="firstName" value="" id="firstName" type="text" class="form-control" placeholder="Cardholder First Name"/>
+	            <label for="firstName">Cardholder First Name</label>
+	        </div>
+	        <div class="col-sm-6 form-group">
+	            
+	            <input autocomplete="off" name="lastName" value="" id="lastName" type="text" class="form-control" placeholder="Cardholder Last Name"/>
+	            <label for="lastName">Cardholder Last Name</label>
+	        </div>
+
+	        <div class="col-sm-6 form-group">
+	            
+	            <input autocomplete="off" name="cardNumber" value="" id="cardNumber" type="text" class="form-control credit-card-input" placeholder="Credit Card Number"/>
+	            <label for="cardNumber">Credit Card Number</label>
+	        </div>
+	        
+	        <div class="col-sm-6 form-group helper">
+	        	<input autocomplete="off" name="securityCode" value="" id="securityCode" type="text" class="form-control" placeholder="CVV2"/>
+	        	<label for="securityCode">
+	                CVV2
+	            </label>
+	            <i class="fa fa-question" data-container="body" data-toggle="popover" data-placement="top" data-content="For MasterCard, Visa, and Discover, the CSC is the last three digits in the signature area on the back of your card. For American Express, it's the four digits on the front of the card."></i>
+	        </div>
+
+	        <div class="col-sm-6 form-group">
+	            <label for="expiryMonth">Expiration Date - Month</label>
+		            <select name="expiryMonth" class="form-control">
+		            {% for i in 1..12 %}
+		                <option value="{{ i }}">{{ i }}</option>
+		            {% endfor %}
+		            </select>
+	        </div>
+	        <div class="col-sm-6 form-group">
+	            <label for="expiryYear">Expiration Date - Year</label>
+		            <select autocomplete="off" name="expiryYear" id="expiryYear" class="form-control">
+		                {% for i in 2014..2034 %}
+		                <option value="{{ i }}">{{ i }}</option>
+		                {% endfor %}
+		            </select>
+	        </div>
+	        
+		</div>
+    </div>
+    <div class="clearfix">
+		<a class="btn btn-default btn-lg btn-checkout-step pull-left" href="#" 
+        data-ajax-handler="shop:checkout" 
+        data-ajax-update="#checkout-page=shop-checkout, #checkout-progress=shop-checkout-progress, #mini-cart=shop-minicart"
+        data-ajax-extra-fields="nextStep=shipping_method"><i class="fa fa-arrow-left"></i> Previous Step</a>
+		<button type="submit" class="btn btn-danger solid btn-lg btn-checkout-step pull-right">Pay Now <i class="fa fa-money"></i></button>
+	</div>
+</form>

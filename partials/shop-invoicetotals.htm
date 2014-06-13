@@ -1,0 +1,10 @@
+<ul class="price-list list-group">
+<li class="list-group-item"><strong>Discount applied:</strong> <i class="badge">{{ 0|currency }}</i></li>
+<li class="list-group-item"><strong>Subtotal:</strong> <i class="badge">{{ invoice.subtotal|currency }}</i></li>
+<li class="list-group-item"><strong>Sales Tax:</strong> <i class="badge">{{ invoice.tax_total|currency }}</i></li>
+<li class="list-group-item"><strong>Shipping:</strong> <i class="badge">{{ invoice.total_shipping_quote|currency }}</i></li>
+{% if invoice.shipping_tax %}
+  <li class="list-group-item"><strong>Shipping Taxes:</strong> <i class="badge">{{ order.shipping_tax|currency }}</i></li>
+{% endif %}
+<li class="list-group-item order-total h4 clearfix"><strong>Total:</strong>  <i class="badge">{{ invoice.total|currency }}</i></li>
+</ul>
