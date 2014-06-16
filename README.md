@@ -11,9 +11,9 @@ This work is licensed under a Creative Commons Attribution-NoDerivatives 4.0 Int
 
 http://creativecommons.org/licenses/by-nd/4.0/
 
-![Barcelona Theme](https://raw.githubusercontent.com/lemonstand/lscloud-theme-barcelona/master/resources/images/barcelona-screen.png)
+![Barcelona Theme](https://raw.githubusercontent.com/lemonstand/lscloud-theme-boxie/master/resources/img/boxie-screen.png)
 
-Boxie – is a cleanand modern HTML/CSS Template for your LemonStand cloud store! User friendly and simple for customers.
+Boxie – is a clean and modern HTML/CSS Template for your LemonStand cloud store! User friendly and simple for customers.
 
 
 ##Template features and options
