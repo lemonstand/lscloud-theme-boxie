@@ -348,10 +348,13 @@
 //! Equalize row heights	 
 //===============
 		var container = document.querySelector('.product-grid > .row');
+		var msnry;
 		if ($('.product-grid').length) {
-			var msnry = new Masonry( container, {
-			  // options
-			  itemSelector: '.product-holder'
+			imagesLoaded( container, function() {
+				msnry = new Masonry( container, {
+					itemSelector: '.product-holder'
+			  });
+			  console.log('loaded');
 			});
 		}
 	
