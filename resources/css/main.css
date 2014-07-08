@@ -7047,6 +7047,22 @@ input[type="password"]:focus + label {
 #single-product .product-img-zoom {
   cursor: crosshair;
 }
+#product-page:before,
+#product-page:after {
+  content: " ";
+  display: table;
+}
+#product-page:after {
+  clear: both;
+}
+#product-page:before,
+#product-page:after {
+  content: " ";
+  display: table;
+}
+#product-page:after {
+  clear: both;
+}
 .quantity-selector {
   display: block;
   float: left;
