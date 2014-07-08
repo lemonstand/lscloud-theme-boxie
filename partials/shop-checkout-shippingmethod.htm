@@ -11,7 +11,7 @@
                   <input class="custom-radio" name="shippingMethod" 
                     {{ option.error_hint ? 'disabled' : null }} 
                     value="{{ index }}" 
-                    {{ radio_state(option.shippingMethodId, shippingMethod) }}
+                    {{ radio_state(shippingMethodInfo.id, option.id) }}
                     type="radio" id="{{ 'option'~index }}" />
                     
                   <label for="{{ 'option'~index }}" class="choice-title h6">
