@@ -1,5 +1,5 @@
 <ul class="price-list list-group">
-<li class="list-group-item"><span>Discount applied:</span> <i class="badge">{{ 0|currency }}</i></li>
+<li class="list-group-item"><span>Discount applied:</span> <i class="badge">{{ order.total_discount|currency }}</i></li>
 <li class="list-group-item"><span>Subtotal:</span> <i class="badge">{{ order.subtotal_invoiced|currency }}</i></li>
 <li class="list-group-item"><span>Sales Tax:</span> <i class="badge">{{ order.total_sales_tax|currency }}</i></li>
 <li class="list-group-item"><span>Shipping:</span> <i class="badge">{{ order.total_shipping_quote|currency }}</i></li>
