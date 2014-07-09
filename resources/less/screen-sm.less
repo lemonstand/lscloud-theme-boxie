@@ -1,0 +1,249 @@
+/* ==========================================================================
+   !Base
+   ========================================================================== */
+
+
+/* ==========================================================================
+   !Header
+   ========================================================================== */
+.navbar-default {
+	&>.container {
+		position: relative;
+	}
+	
+	#main-nav {
+		.dropdown {
+			.dropdown-menu {
+				border: none;
+				text-transform: none;
+			}
+			//uncomment to enable hover menu
+			/*
+&:hover .dropdown-menu {
+				display: block;
+			}
+*/
+		}
+	}
+	#navbar-totals {
+		padding: 20px 15px;
+		border-left: 1px solid #e7e7e7;
+		height: 60px;
+		.transition(all 1.5s);
+		&.active {
+			background: @brand-primary;
+			color: #fff;
+			.transition(all 0.1s);
+		}
+	}
+}
+
+#mini-cart {
+	right: 0;
+	width: 360px;
+	&:after, &:before {
+		right: 20px;
+	}
+	.mini-cart-totals {
+		padding-top: 20px;
+		margin-top: 15px;
+		border-top: 1px solid @gray-lighter;
+	}
+}
+/* ==========================================================================
+   ! Content
+   ========================================================================== */
+#home-banner {
+	.carousel-inner {
+		&> .item {
+			.jumbotron {
+				position: absolute;
+			}
+		}
+	}
+	.carousel-caption {
+		left: 0;
+		right: 0;
+	}
+}
+#product-quick-view {
+	.modal-header {
+		padding-bottom: 30px;
+	}
+}
+//Shop
+.product-item {
+	.transition(opacity 0.2s);
+	.product-img {
+		overflow: hidden;
+		display: block;
+		img {
+			.transition(all 0.2s);
+		}
+		&:hover {
+			img {
+				-ms-transform: scale(1.1); /* IE 9 */
+				-webkit-transform: scale(1.1); /* Chrome, Safari, Opera */
+				transform: scale(1.1);
+			}
+		}
+	}
+	.buttons-holder {
+		width: 100%;
+		text-align: center;
+		.btn-add-cart, .btn-options {
+			opacity: 0;
+			margin-left: -40px;
+			.transition(all 0.2s);
+		}	
+		.btn-quick-view {
+			opacity: 0;
+			margin-right: -40px;
+			.transition(all 0.2s);
+			.fa {
+				margin: 0;
+			}
+		}
+	}
+	
+	&:hover {
+		box-shadow: 0 1px 2px 0 fade(#000, 30%);
+		.btn-add-cart, .btn-options, .btn-quick-view {
+			margin-left: 0;
+			margin-right: 0;
+			opacity: 1;
+		}
+	}
+}
+//Single Product
+#single-product {
+	position: relative;
+	.breadcrumb {
+		position: absolute;
+		top: -36px;
+	}
+}
+.quantity-selector {
+	.quantity-btn {
+		padding: 10px 4px;
+	}	
+}
+
+//Checkout
+#checkout-progress {
+	.breadcrumb {
+		margin: 0;
+		padding: 0;
+		border-left: 1px solid #fff;
+		border-top: 1px solid #fff;
+		border-right: 1px solid #fff;
+		overflow: hidden;
+		.clearfix;
+		display: block;
+		width: auto;
+		li {
+			padding: 10px 18px 9px 36px;
+			float: left;
+			font-size: 12px;
+			display: list-item;
+			&:first-child {
+			}
+			&:last-child {
+				padding-right: 36px;
+				&.active {
+					&:after, &:before {
+						display: none;
+					}
+				}
+			}
+			&:after, &:before {
+				content: '';
+				position: absolute;
+				display: block;
+			}
+			a {
+				display: block;
+			}
+		}
+		.active {
+			position: relative;
+			background: @brand-primary;
+			color: #fff;
+			&:after, &:before {
+				left: 100%;
+				top: 50%;
+				border: solid transparent;
+				content: " ";
+				height: 0;
+				width: 0;
+				z-index: 1;
+				pointer-events: none;
+			}
+			&:after {
+				border-color: transparent;
+				border-left-color: @brand-primary;
+				border-width: 18px;
+				margin-top: -18px;
+			}
+			&:before {
+				border-color: rgba(255, 255, 255, 0);
+				border-left-color: #fff;
+				border-width: 21px;
+				margin-top: -21px;
+			}
+			a {
+				color: #fff;
+			}
+		}
+	}
+}
+#cart-content {
+	.cart-labels {
+		padding: 10px 0;
+	}
+}
+#cart-actions {
+	.btn {
+		display: inline-block;
+		margin-bottom: 0;
+	}
+	.btn-update-cart {
+		float: right;
+	}
+	.btn-continue-shopping {
+		float: left;
+	}
+	.form-group {
+		float: right;
+	}
+}
+#payment_method {
+	label {
+		display: inline-block;
+		margin-right: 20px;
+	}
+}
+
+#page-footer {
+	.footer-info {
+		padding-top: 40px;
+		padding-bottom: 24px;
+		font-size: 13px;
+		ul {
+			li {
+				display: inline-block;
+				&+ li {
+					margin-left: 10px;
+					padding-left: 15px;
+					margin-right: 0;
+					padding-top: 0;
+					padding-bottom: 0;
+					border-left: 1px solid @gray-lighter;
+				}	
+			}
+		}
+		.credit {
+			text-align: right;
+		}
+	}
+}

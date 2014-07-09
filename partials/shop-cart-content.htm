@@ -7,8 +7,14 @@
 	</div>
 		
 	<div id="cart-actions" class="btn-holder clearfix">
-		<a class="btn btn-default btn-update-cart pull-right" href="#" data-ajax-handler="shop:cart" data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart, #navbar-totals=shop-minicart-totals">Update Cart <i class="fa fa-refresh"></i></a>
-		<a class="btn btn-default btn-continue-shopping pull-left" href="{{ site_url('shop') }}" ><i class="fa fa-arrow-left"></i> Continue Shopping</a>
+		<a class="btn btn-default btn-update-cart" href="#" data-ajax-handler="shop:cart" data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart, #navbar-totals=shop-minicart-totals">Update Cart <i class="fa fa-refresh"></i></a>
+		
+		<div class="col-sm-6 col-lg-4 form-group">
+			<input type="text" class="form-control" id="coupon-code" name="coupon-code" placeholder="Coupon Code"/>
+			<label for="coupon-code">Coupon Code</label>
+		</div>
+		
+		<a class="btn btn-default btn-continue-shopping" href="{{ site_url('shop') }}" ><i class="fa fa-arrow-left"></i> Continue Shopping</a>
 	</div>	
 </div>
 
