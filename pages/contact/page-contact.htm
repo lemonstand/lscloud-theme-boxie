@@ -21,3 +21,37 @@ url: /contact
 		<p> Eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
 	</div>
 </section>
+
+<div id="banner" class="jumbotron row">
+	<h2>Send us a message</h2>
+</div>
+
+<section class="page-section row contact-section">
+	{{ open_form({'data-ajax-handler': 'system:onSendMessage'}) }}
+		{{ flash() }}
+
+		<div class="col-sm-6 form-group">
+			<input data-mirror type="text" class="form-control" name="fields[email]" id="fields_email" value="" placeholder="Your email address"/>
+			<label for="fields_email">E-mail Address *</label>
+			<span class="error"></span>
+		</div>
+		<div class="col-sm-6 form-group">
+			<input data-mirror type="text" class="form-control" name="fields[name]" id="fields_name" value="" placeholder="Your name"/>
+			<label for="fields_name">Name</label>
+			<span class="error"></span>
+		</div>
+
+		<div class="col-sm-12 form-group">
+			<textarea data-mirro class="form-control" id="fields_message" name="fields[message]" value="" rows="10" placeholder="Message"></textarea>
+			<label for="fields_message">Message</label>
+			<span class="error"></span>
+		</div>
+
+		<div class="col-sm-12">
+			<div class="clearfix">
+				<input type="text" name="hp" value="" style="display: none"/>
+				<input type="submit" class="btn btn-primary btn-lg pull-right" value="Submit"/>
+			</div>
+		</div>
+	{{ close_form() }}
+</section>
