@@ -27,7 +27,7 @@
 			
 			{{ partial('shop-product-options') }}
 			
-		{% if not product.isOutOfStock() %}
+		{% if not product.isOutOfStock() or product.allow_preorder %}
 			<input type="hidden" name="productId" value="{{ product.id }}"/>
 			<div class="add-cart-holder form-group">
 				{{ flash() }}
