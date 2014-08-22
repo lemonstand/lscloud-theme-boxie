@@ -6,7 +6,7 @@ name: Order
 url: '/order/:orderId'
 ---
 <div id="banner" class="jumbotron row">
-	<h1>Order #{{ order.id }}</h1>
+	<h1>Order #{{ order.number }}</h1>
 </div>
 <section id="order" class="page-section row">
 	{% if order %}
