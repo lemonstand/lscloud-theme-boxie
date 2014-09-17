@@ -5,7 +5,7 @@
 <meta name="Description" content="{{ page.description }}"/>
 <meta name="Keywords" content="{{ page.keywords }}"/>
 <meta name="author" content="">
-<link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+<link rel="shortcut icon" href="{{ theme.faviconImage.thumbnail('auto', 'auto') }}" type="image/png">
 <title>{{ page.title }}</title>
 
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,800,300' rel='stylesheet' type='text/css'>
@@ -18,3 +18,18 @@
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+<style type="text/css">
+  .btn-primary{
+    background-color:{{ theme.btnPrimaryColor }};
+  }
+  .btn-primary:hover{
+    background-color:{{ theme.btnPrimaryHoverColor }};
+  }
+  .navbar-default .navbar-nav > li > a{
+      color: {{ theme.navbarLinkColor }};
+  }
+  .navbar .container{
+      background: {{ theme.navbarBackgroundColor }};
+  }
+</style>
