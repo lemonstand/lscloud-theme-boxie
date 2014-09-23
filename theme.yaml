@@ -1,8 +1,18 @@
 ---
-name: Boxie
+name: Boxie-dpark
 description: 'LemonStand Cloud Responsive Theme - Boxie'
 author: 'Nic Oliver'
 website: 'http://nboliver.com/me/'
 engine: twig
 404: '404'
+customFields:
+  btnPrimaryColor: {type:color, title:'Primary Button Background Color', default:'#0c4d6c'}
+  btnPrimaryHoverColor: {type:color, title:'Primary Button Hover Background Color', default:'#083347'}
+  faviconImage: {type:image, title:'Favicon Image (Image you see on the chrome/tab)', default:'@/img/bg-dropdown-arrow.png'}
+  logoImage: { type: image, title: 'Global: Logo Image', default: '@/img/logo.png'}
+  navbarBackgroundColor: { type:color, title:'Global: Navbar Background Color', default:'white'}
+  navbarLinkColor: { type:color, title:'Global: Navbar Link Color', default:'#777777'}
+  socialFacebookUrl: { type: text, title: 'Global: Facebook URL', default: 'http://facebook.com/lemonstand' }
+  socialTwitterUrl: { type: text, title: 'Global: Twitter URL', default: 'http://twitter.com/LemonStand' }
+  socialGoogleUrl: { type: text, title: 'Global: Google+ URL', default: 'http://google.com' }
 ---
