@@ -51,6 +51,12 @@
 			$el.val(q);
 		});
 		
+		$(document).on('keyup', '.quantity-selector .form-control', function() {
+			if ($(this).val() === '') {
+				$(this).val(1);
+			}
+		});
+		
 //===============
 //! SINGLE PRODUCT	 
 //===============		
