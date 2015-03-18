@@ -1,5 +1,5 @@
 ---
-name: Boxie
+name: 'Boxie'
 description: 'LemonStand Cloud Responsive Theme - Boxie'
 author: 'Nic Oliver'
 website: 'http://nboliver.com/me/'
@@ -16,3 +16,6 @@ customFields:
   socialTwitterUrl: { type: text, title: 'Global: Twitter URL', default: 'http://twitter.com/LemonStand' }
   socialGoogleUrl: { type: text, title: 'Global: Google+ URL', default: 'http://google.com' }
 ---
+
+
+
