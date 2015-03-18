@@ -26,6 +26,7 @@
 	{% if product.enabled %}
 			
 			{{ partial('shop-product-options') }}
+			{{ partial('shop-product-extras') }}
 			
 		{% if not product.isOutOfStock() or product.allow_preorder %}
 			<input type="hidden" name="productId" value="{{ product.id }}"/>
