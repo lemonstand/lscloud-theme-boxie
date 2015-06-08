@@ -1,0 +1,15 @@
+.open-sans {
+  font-family: 'Open Sans', sans-serif;
+}
+.open-sans-light {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+.open-sans-bold {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+}
+.open-sans-xbold {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+}
