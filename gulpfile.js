@@ -31,12 +31,6 @@ gulp.task('lint', function() {
 });
 
 // Compile less
-// gulp.task('less', function () {
-//     return gulp.src('resources/less/*.less')
-//         .pipe(watchLess('resources/less/*.less'))
-//         .pipe(less())
-//         .pipe(gulp.dest('resources/css'));
-// });
 gulp.task('less', function() {
     return gulp.src('resources/less/*.less')
         .pipe(less())
