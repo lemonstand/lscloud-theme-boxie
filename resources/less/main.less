@@ -2,10 +2,10 @@
  * BOXIE 1.0
  */
 
-@import "../bower_components/bootstrap/less/bootstrap.less";
-@import "../bower_components/OwlCarousel/owl-carousel/owl.carousel.less";
-@import "../bower_components/OwlCarousel/owl-carousel/owl.theme.less";
-@import "../bower_components/chosen_v1.1.0/chosen.less";
+@import "../bower_components/bootstrap/dist/css/bootstrap.css";
+@import "../bower_components/OwlCarousel/owl-carousel/owl.carousel.css";
+@import "../bower_components/OwlCarousel/owl-carousel/owl.theme.css";
+@import "../bower_components/chosen_v1.1.0/chosen.css";
 @import "variables.less";
 @import "mixins.less";
 
@@ -200,7 +200,7 @@ select.form-control {
 .custom-radio + label::before {
     content: '';
     display: inline-block;
-    .square(20px);
+    /*.square(20px);*/
     border: 1px solid @brand-primary;
     cursor: pointer;
     vertical-align: text-bottom;
@@ -258,13 +258,13 @@ input[type="password"] {
 		margin-right: -15px;
 		white-space: nowrap;
 		pointer-events: none;
-		.translate(100%, 0);
-		.transition(all 0.3s ease);
+		/*.translate(100%, 0);*/
+		/*.transition(all 0.3s ease);*/
 	}
 	&:focus + label {
 		right: 15px;
 		margin-right: 0;
-		.translate(0, 0);
+		/*.translate(0, 0);*/
 		background: @brand-primary;
 		color: #fff;
 		opacity: 1;
@@ -278,7 +278,7 @@ input[type="password"] {
 }
 .pagination-holder {
 	&> ul {
-		.pagination();
+		/*.pagination();*/
 		&> li {
 			&> a {
 				border-radius: 0 !important;
@@ -322,7 +322,7 @@ input[type="password"] {
 	#search-form { 
 		.form-control {
 			font-style: italic;
-			.placeholder(@gray-light);
+			/*.placeholder(@gray-light);*/
 		}
 		.search-btn {
 			outline: none;
@@ -461,7 +461,7 @@ input[type="password"] {
 		margin-top: 15px;
 	}
 	.mini-cart-totals {
-		.clearfix();
+		/*.clearfix();*/
 	}
 }
 .remove-item {
@@ -602,13 +602,13 @@ input[type="password"] {
 	}
 }
 #product-page {
-	.clearfix();
+	/*.clearfix();*/
 }
 .quantity-selector {
 	display: block;
 	float: left;
 	margin-right: 4px;
-	.clearfix();
+	/*.clearfix();*/
 	.form-control {
 		width: 50px;
 		display: inline-block;
@@ -645,7 +645,7 @@ input[type="password"] {
 	ul {
 		li {
 			a {
-				.square(21px);
+				/*.square(21px);*/
 				color: @boxie-gray;
 				display: block;
 				text-align: center;
@@ -694,7 +694,7 @@ input[type="password"] {
 		display: block;
 		padding: 20px 15px;
 		border-bottom: 1px solid @gray-lighter;
-		.transition(background 0.7s ease);
+		/*.transition(background 0.7s ease);*/
 		&.active {
 			background: #fff;
 		}
@@ -702,7 +702,7 @@ input[type="password"] {
 			background: @brand-primary;
 			color: #fff;
 			text-decoration: none;
-			.transition(background 0.1s ease);
+			/*.transition(background 0.1s ease);*/
 			.badge {
 				background: #fff;
 				color: @brand-primary;
@@ -829,7 +829,7 @@ input[type="password"] {
 	
 	.helper {
 		.fa-question {
-			.transition(all 0.3s ease);
+			/*.transition(all 0.3s ease);*/
 		}
 		input[type="text"], 
 		input[type="email"], 
@@ -861,7 +861,7 @@ input[type="password"] {
 	.badge {
 		font-weight: 300;
 		font-size: 14px;
-		.transition(all 0.3s);
+		/*.transition(all 0.3s);*/
 		background: none;
 		color: @gray-light;
 	}

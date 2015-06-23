@@ -5,7 +5,13 @@
 @brand-success: #707c3c;
 @text-color: #868485;
 @boxie-gray: #cfcfcf;
+@gray: @boxie-gray;
+@gray-light: #ccc;
+@gray-lighter: #efefef;
 @gray-lightest: #f8f8f8;
+@gray-darker: #555555;
+@input-border: @gray-lighter;
+@input-border-focus: @boxie-gray;
 
 //buttons
 @btn-default-bg: transparent;
@@ -33,7 +39,10 @@
 @breadcrumb-separator:          "\203A";
 
 @screen-lg:                  1300px;
-@container-large-desktop:      ((1240px + @grid-gutter-width));
+@screen-sm-min:               480px;
+@screen-md-min:               720px;
+@screen-lg-min:               1200px;
+@container-large-desktop:      1240px;
 
 //** Point at which the navbar becomes uncollapsed.
-@grid-float-breakpoint:     @screen-md-min;
+//@grid-float-breakpoint:     @screen-md-min;
