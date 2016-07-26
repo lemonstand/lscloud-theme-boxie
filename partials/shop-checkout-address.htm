@@ -3,37 +3,37 @@
 <h2>Billing Information</h2>
 <div id="billing-info" class="row">
 	<div class="col-sm-6 form-group">
-		<input data-mirror type="text" class="form-control" name="billingInfo[firstName]" id="billing_firstName" value="{{ billingInfo.firstName }}" placeholder="First Name"/>
+		<input data-mirror type="text" class="form-control" name="billingInfo[firstName]" id="billing_firstName" value="{{ billingInfo.firstName }}" placeholder="First Name *"/>
 		<label for="billing_firstName">First Name</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-6 form-group">
-		<input data-mirror type="text" class="form-control" name="billingInfo[lastName]" id="billing_lastName" value="{{ billingInfo.lastName }}" placeholder="Last Name"/>
+		<input data-mirror type="text" class="form-control" name="billingInfo[lastName]" id="billing_lastName" value="{{ billingInfo.lastName }}" placeholder="Last Name *"/>
 		<label for="billing_lastName">Last Name</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-6 form-group">
-		<input type="email" class="form-control" name="billingInfo[email]" id="billing_email" value="{{ billingInfo.email }}" placeholder="E-mail Address"/>
+		<input type="email" class="form-control" name="billingInfo[email]" id="billing_email" value="{{ billingInfo.email }}" placeholder="E-mail  *"/>
 		<label for="billing_email">E-mail Address</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-6 form-group">
-		<input data-mirror type="text" class="form-control" name="billingInfo[phone]" id="billing_phone" value="{{ billingInfo.phone }}" placeholder="Phone Number"/>
+		<input data-mirror type="text" class="form-control" name="billingInfo[phone]" id="billing_phone" value="{{ billingInfo.phone }}" placeholder="Phone Number *"/>
 		<label for="billing_phone">Phone Number</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-12 form-group">
-		<input data-mirror type="text" class="form-control" id="billing_address" name="billingInfo[streetAddressLine1]" value="{{ billingInfo.streetAddressLine1 }}" placeholder="Address"/>
+		<input data-mirror type="text" class="form-control" id="billing_address" name="billingInfo[streetAddressLine1]" value="{{ billingInfo.streetAddressLine1 }}" placeholder="Address *"/>
 		<label for="billing_address">Address</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-6 form-group">
-		<input data-mirror type="text" class="form-control" name="billingInfo[city]" id="billing_city" value="{{ billingInfo.city }}" placeholder="City"/>
+		<input data-mirror type="text" class="form-control" name="billingInfo[city]" id="billing_city" value="{{ billingInfo.city }}" placeholder="City *"/>
 		<label for="billing_city">City</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-6 form-group">
-		<input data-mirror type="text" class="form-control" id="billing_postalCode" name="billingInfo[postalCode]" value="{{ billingInfo.postalCode }}" placeholder="Zip Code"/>
+		<input data-mirror type="text" class="form-control" id="billing_postalCode" name="billingInfo[postalCode]" value="{{ billingInfo.postalCode }}" placeholder="Zip Code *"/>
 		<label for="billing_postalCode">Zip Code</label>
 		<span class="error"></span>
 	</div>
@@ -59,6 +59,11 @@
 	</div>
 </div>
 {# row #}
+<div class="h6">
+	<input type="checkbox" name="accepts_marketing" id="accepts_marketing" checked/>
+	Recieve promotional emails
+</div>
+
 <h2 class="inline-block">Shipping Information</h2>
 
 <div class="h6">
@@ -68,32 +73,32 @@
 
 <div id="shipping-info" class="row panel-collapse collapse">
 	<div class="col-sm-6 form-group">
-		<input  data-mirror type="text" class="form-control" name="shippingInfo[firstName]" id="shipping_firstName" value="{{ shippingInfo.firstName }}" placeholder="First Name"/>
+		<input  data-mirror type="text" class="form-control" name="shippingInfo[firstName]" id="shipping_firstName" value="{{ shippingInfo.firstName }}" placeholder="First Name *"/>
 		<label for="shipping_firstName">First Name</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-6 form-group">
-		<input data-mirror type="text" class="form-control" name="shippingInfo[lastName]" id="shipping_lastName" value="{{ shippingInfo.lastName }}" placeholder="Last Name"/>
+		<input data-mirror type="text" class="form-control" name="shippingInfo[lastName]" id="shipping_lastName" value="{{ shippingInfo.lastName }}" placeholder="Last Name *"/>
 		<label for="shipping_lastName">Last Name</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-6 form-group">
-		<input data-mirror type="text" class="form-control" name="shippingInfo[phone]" id="shipping_phone" value="{{ shippingInfo.phone }}" placeholder="Phone Number"/>
+		<input data-mirror type="text" class="form-control" name="shippingInfo[phone]" id="shipping_phone" value="{{ shippingInfo.phone }}" placeholder="Phone Number *"/>
 		<label for="shipping_phone">Phone Number</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-12 form-group">
-		<input data-mirror type="text" class="form-control" name="shippingInfo[streetAddressLine1]" id="shipping_address"  value="{{ shippingInfo.streetAddressLine1 }}" placeholder="Address"/>
+		<input data-mirror type="text" class="form-control" name="shippingInfo[streetAddressLine1]" id="shipping_address"  value="{{ shippingInfo.streetAddressLine1 }}" placeholder="Address *"/>
 		<label for="shipping_address">Address</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-6 form-group">
-		<input data-mirror type="text" class="form-control" name="shippingInfo[city]" id="shipping_city" value="{{ shippingInfo.city }}" placeholder="City"/>
+		<input data-mirror type="text" class="form-control" name="shippingInfo[city]" id="shipping_city" value="{{ shippingInfo.city }}" placeholder="City *"/>
 		<label for="shipping_city">City</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-6 form-group">
-		<input data-mirror type="text" class="form-control" name="shippingInfo[postalCode]" id="shipping_postalCode" value="{{ shippingInfo.postalCode }}" placeholder="Zip Code"/>
+		<input data-mirror type="text" class="form-control" name="shippingInfo[postalCode]" id="shipping_postalCode" value="{{ shippingInfo.postalCode }}" placeholder="Zip Code *"/>
 		<label for="shipping_postalCode">Zip Code</label>
 		<span class="error"></span>
 	</div>
