@@ -38,28 +38,29 @@ url: /login
 			<h2>Register a New Account</h2>
 			<div class="row">
 				<div class="col-xs-12 form-group">
-					<input name="signup[first_name]" id="signup[first_name]" type="text" class="form-control" placeholder="First Name" />
+					<input name="signup[first_name]" id="signup[first_name]" type="text" class="form-control" placeholder="First Name *" />
 					<label for="signup[first_name]">First Name</label>
 				</div>
 				<div class="col-xs-12 form-group">
-					<input name="signup[last_name]" id="signup[last_name]" type="text" class="form-control"  placeholder="Last Name"/>
+					<input name="signup[last_name]" id="signup[last_name]" type="text" class="form-control"  placeholder="Last Name *"/>
 					<label for="signup[last_name]">Last Name</label>
 				</div>
 				<div class="col-xs-12 form-group">
-					<input id="signup[email]" type="text" name="signup[email]" class="form-control"  placeholder="Email"/>
+					<input id="signup[email]" type="text" name="signup[email]" class="form-control"  placeholder="Email *"/>
 					<label for="signup[email]">Email</label>
 				</div>
 				<div class="col-xs-12 form-group">
-					<input name="signup[password]" id="signup[password]" type="password" class="form-control"  placeholder="Password"/>
+					<input name="signup[password]" id="signup[password]" type="password" class="form-control"  placeholder="Password *"/>
 					<label for="signup[password]">Password</label>
 				</div>
 				<div class="col-xs-12 form-group">
-					<input name="signup[password_confirmation]" id="signup[password_confirmation]" type="password" class="form-control"  placeholder="Confirm Password"/>
+					<input name="signup[password_confirmation]" id="signup[password_confirmation]" type="password" class="form-control"  placeholder="Confirm Password *"/>
 					<label for="signup[password_confirmation]">Confirm Password</label>
 				</div>
 				<input type="hidden" name="autologin" value="1" />
 				<input type="hidden" name="redirect" value="{{ site_url('registered') }}"/>				
 			</div>
+			<input type="checkbox" name="accepts_marketing" id="accepts_marketing" checked/> Recieve promotional emails<br><br>
 			<button class="btn btn-primary">Submit <i class="fa fa-arrow-right"></i></button>
 		{{ close_form() }}
 	</div>
