@@ -4,41 +4,46 @@
 <div id="billing-info" class="row">
 	<div class="col-sm-6 form-group">
 		<input data-mirror type="text" class="form-control" name="billingInfo[firstName]" id="billing_firstName" value="{{ billingInfo.firstName }}" placeholder="First Name *"/>
-		<label for="billing_firstName">First Name</label>
+		<label for="billing_firstName">First Name *</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-6 form-group">
 		<input data-mirror type="text" class="form-control" name="billingInfo[lastName]" id="billing_lastName" value="{{ billingInfo.lastName }}" placeholder="Last Name *"/>
-		<label for="billing_lastName">Last Name</label>
+		<label for="billing_lastName">Last Name *</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-6 form-group">
 		<input type="email" class="form-control" name="billingInfo[email]" id="billing_email" value="{{ billingInfo.email }}" placeholder="E-mail  *"/>
-		<label for="billing_email">E-mail Address</label>
+		<label for="billing_email">E-mail Address *</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-6 form-group">
 		<input data-mirror type="text" class="form-control" name="billingInfo[phone]" id="billing_phone" value="{{ billingInfo.phone }}" placeholder="Phone Number *"/>
-		<label for="billing_phone">Phone Number</label>
+		<label for="billing_phone">Phone Number *</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-12 form-group">
-		<input data-mirror type="text" class="form-control" id="billing_address" name="billingInfo[streetAddressLine1]" value="{{ billingInfo.streetAddressLine1 }}" placeholder="Address *"/>
-		<label for="billing_address">Address</label>
+		<input data-mirror type="text" class="form-control" id="billing_address" name="billingInfo[streetAddressLine1]" value="{{ billingInfo.streetAddressLine1 }}" placeholder="Address line 1 *"/>
+		<label for="billing_address">Address line 1 *</label>
+		<span class="error"></span>
+	</div>
+	<div class="col-sm-12 form-group">
+		<input data-mirror type="text" class="form-control" id="billing_address" name="billingInfo[streetAddressLine2]" value="{{ billingInfo.streetAddressLine2 }}" placeholder="optional"/>
+		<label for="billing_address">Address 2</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-6 form-group">
 		<input data-mirror type="text" class="form-control" name="billingInfo[city]" id="billing_city" value="{{ billingInfo.city }}" placeholder="City *"/>
-		<label for="billing_city">City</label>
+		<label for="billing_city">City *</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-6 form-group">
 		<input data-mirror type="text" class="form-control" id="billing_postalCode" name="billingInfo[postalCode]" value="{{ billingInfo.postalCode }}" placeholder="Zip Code *"/>
-		<label for="billing_postalCode">Zip Code</label>
+		<label for="billing_postalCode">Zip Code *</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-6 form-group">
-		<label for="billing_country" class="hide">Country</label>
+		<label for="billing_country" class="hide">Country *</label>
 		<!-- 
 			The state selector updates automatically when the country changes. 
 			See app.js for the implementation details. 
@@ -74,36 +79,41 @@
 <div id="shipping-info" class="row panel-collapse collapse">
 	<div class="col-sm-6 form-group">
 		<input  data-mirror type="text" class="form-control" name="shippingInfo[firstName]" id="shipping_firstName" value="{{ shippingInfo.firstName }}" placeholder="First Name *"/>
-		<label for="shipping_firstName">First Name</label>
+		<label for="shipping_firstName">First Name *</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-6 form-group">
 		<input data-mirror type="text" class="form-control" name="shippingInfo[lastName]" id="shipping_lastName" value="{{ shippingInfo.lastName }}" placeholder="Last Name *"/>
-		<label for="shipping_lastName">Last Name</label>
+		<label for="shipping_lastName">Last Name *</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-6 form-group">
 		<input data-mirror type="text" class="form-control" name="shippingInfo[phone]" id="shipping_phone" value="{{ shippingInfo.phone }}" placeholder="Phone Number *"/>
-		<label for="shipping_phone">Phone Number</label>
+		<label for="shipping_phone">Phone Number *</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-12 form-group">
-		<input data-mirror type="text" class="form-control" name="shippingInfo[streetAddressLine1]" id="shipping_address"  value="{{ shippingInfo.streetAddressLine1 }}" placeholder="Address *"/>
-		<label for="shipping_address">Address</label>
+		<input data-mirror type="text" class="form-control" name="shippingInfo[streetAddressLine1]" id="shipping_address"  value="{{ shippingInfo.streetAddressLine1 }}" placeholder="Address line 1 *"/>
+		<label for="shipping_address">Address line 1 *</label>
+		<span class="error"></span>
+	</div>
+	<div class="col-sm-12 form-group">
+		<input data-mirror type="text" class="form-control" name="shippingInfo[streetAddressLine2]" id="shipping_address"  value="{{ shippingInfo.streetAddressLine2 }}" placeholder="optional"/>
+		<label for="shipping_address">Address line 2</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-6 form-group">
 		<input data-mirror type="text" class="form-control" name="shippingInfo[city]" id="shipping_city" value="{{ shippingInfo.city }}" placeholder="City *"/>
-		<label for="shipping_city">City</label>
+		<label for="shipping_city">City *</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-6 form-group">
 		<input data-mirror type="text" class="form-control" name="shippingInfo[postalCode]" id="shipping_postalCode" value="{{ shippingInfo.postalCode }}" placeholder="Zip Code *"/>
-		<label for="shipping_postalCode">Zip Code</label>
+		<label for="shipping_postalCode">Zip Code *</label>
 		<span class="error"></span>
 	</div>
 	<div class="col-sm-6 form-group">
-		<label for="shipping_country" class="hide">Country</label>
+		<label for="shipping_country" class="hide">Country *</label>
 			<select data-mirror id="shipping_country" class="chzn-select form-control" name="shippingInfo[countryId]" data-state-selector="#shipping_state" data-current-state="{{ shippingInfo.stateId }}" >
 			{% for country in countries %}
 			<option {{ option_state(shippingInfo.countryId, country.id) }} value="{{ country.id }}">{{ country.name }}</option>
