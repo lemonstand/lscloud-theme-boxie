@@ -318,11 +318,9 @@ input[type="password"]:focus + label {
   width: 90%;
   max-width: 1270px;
 }
-.pagination-holder > ul {
-  /*.pagination();*/
-}
-.pagination-holder > ul > li > a {
-  border-radius: 0 !important;
+.pagination-holder > ul > li {
+  list-style: none;
+  display: inline;
 }
 /* ==========================================================================
    !Header
@@ -745,14 +743,17 @@ input[type="password"]:focus + label {
   text-transform: none;
 }
 .pagination-holder {
-  text-align: right;
+  text-align: center;
+  margin-top: 36px;
 }
-.pagination-holder .pagination {
-  border-radius: 0;
+.pagination-holder > ul > li > a {
+  padding: 8px;
 }
-.pagination-holder .pagination > li > a {
-  border-radius: 0;
+.pagination-holder > ul > li.active {
+  padding: 8px;
+  background: #004C6E;
 }
+.pagination-holder > ul > li.active > a {color: #FFF;}
 #cart,
 #receipt,
 #order,

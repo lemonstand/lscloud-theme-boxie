@@ -9,7 +9,7 @@
 			</button>
 			<a class="navbar-brand" href="{{ site_url('/') }}"><img src="{{ theme.logoImage.thumbnail('auto','auto') }}" alt=""></a>
 		</div>
-		
+
 		<div class="navbar-right navbar-utils">
 			<ul class="list-unstyled clearfix">
 				<li class="hidden-xs">
@@ -31,9 +31,9 @@
 						{{ partial('shop-minicart', {'edit_cart': true}) }}
 					</div>
 				</li>
-			</ul>								
+			</ul>
 		</div>
-		
+
 		<div class="navbar-collapse collapse">
 			<div class="navbar-left">
 				{% set active_page = globals.active_page|default('home') %}
@@ -62,6 +62,7 @@
 					<li class="{{ active_page == 'profile' ? 'active' : null }}"><a href="{{ site_url('profile') }}">My Profile</a></li>
 					{% endif %}
 					<li class="{{ active_page == 'about' ? 'active' : null }}"><a href="{{ site_url('about') }}">About</a></li>
+					<li class="{{ active_page == 'blog' ? 'active' : null }}"><a href="{{ site_url('blog') }}">Blog</a></li>
 					<li class="{{ active_page == 'contact' ? 'active' : null }}"><a href="{{ site_url('contact') }}">Contact</a></li>
 					<li class="visible-xs col-xs-12">
 						{% if customer %}
@@ -72,10 +73,10 @@
 						{% endif %}
 					</li>
 				</ul>
-			</div>	
-			
-					
-			{{ open_form({'id': 'search-form', 'class': 'navbar-form', 'role': 'form', 'method': 'get', 'action': site_url('search')}) }}								
+			</div>
+
+
+			{{ open_form({'id': 'search-form', 'class': 'navbar-form', 'role': 'form', 'method': 'get', 'action': site_url('search')}) }}
 			<div class="input-group">
 				<input type="text" class="search-form form-control" name="query" id="query" placeholder="Type your search term and press Enter" autocomplete="off" value="{{query|unescape}}">
 				<span class="input-group-btn">
@@ -84,7 +85,7 @@
 				</span>
 			</div><!-- /input-group -->
 			{{ close_form() }}
-				
+
 		</div>
 		<!--/.navbar-collapse -->
 	</div>
