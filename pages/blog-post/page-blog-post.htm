@@ -10,34 +10,32 @@ url: /blog/:slug
 <div id="banner" class="jumbotron row">
 	<h1>Blogs</h1>
 </div>
-{% if featured_image %}
-  <section class="section-home-banner">
-      <div class="container">
-        <img class="lazy" src="{{ featured_image.thumbnail(1000, 'auto')|default('http://placehold.it/1000x365') }}" width="1000" alt="{{ featured_image.alt }}"/>
-      </div>
-  </section>
-{% endif %}
 
-<section id="single-product" class="page-section">
+<section class="page-section row" id="single-product">
   {{ code_block('breadcrumbs') }}
-	<div class="container">
-    <div class="row">
+	<div class="col-md-4">
+		{% if featured_image %}
+		  <img class="img-responsive" src="{{ featured_image.thumbnail(1000, 'auto')|default('http://placehold.it/1000x365') }}" alt="{{ featured_image.alt }}"/>
+		{% endif %}
+	</div>
+    <div class="col-md-8">
+			<h2>{{ post.title }} <small>Published {{ post.published_on | date("F j, Y") }} In {{ post.type }}</small></h2>
+			<p>
+				{{ post.body | unescape }}
+			</p>
       <div class="single-blog-post-holder">
-        <div class="col-xs-12 col-sm-12">
-
-        </div>
         <div class="col-xs-12 col-sm-12 blog-holder">
           <!-- BLOG -->
           <div class="row">
             <div class="col-xs-12 col-sm-6">
-              <h1>{{ post.title }}</h1>
+
             </div>
             <div class="col-xs-12 col-sm-6 published-date">
-              <em>Published {{ post.published_on | date("F j, Y") }} In {{ post.type }}</em>
+
             </div>
           </div>
           <div id="blog-content">
-            {{ post.body | unescape }}
+
           </div>
           <!-- BIO -->
       	  <div class="bio-container">
@@ -59,5 +57,4 @@ url: /blog/:slug
         </div>
       </div>
     </div>
-  </div>
 </section>

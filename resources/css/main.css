@@ -63,6 +63,7 @@ h5,
 h6 {
   color: #0c4d6c;
 }
+h2 small{display: block; font-size: 12px; line-height: 18px;}
 .wrap {
   background: #fff;
 }
@@ -517,6 +518,9 @@ input[type="password"]:focus + label {
 }
 .page-section {
   padding: 40px 0;
+}
+.page-section.row .breadcrumb {
+  margin-left:16px;
 }
 .sale-tag {
   position: absolute;
@@ -1232,3 +1236,30 @@ input[type="password"]:focus + label {
     font-size: 12px;
   }
 }
+.volume-pricing-table {width:100%;}
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: center;
+  font-size: 3.15733em; }
+  .rating span {
+    color: #555;
+    display: inline-block;
+    position: relative;
+    cursor: pointer; }
+  .rating span:hover, .rating span:hover ~ span {
+    color: transparent; }
+  .rating span:hover:before, .rating span:hover ~ span:before {
+    content: "\2605";
+    position: absolute;
+    color: gold; }
+  .rating span.select {
+    color: transparent; }
+  .rating span.select:before {
+    content: "\2605";
+    position: absolute;
+    color: gold; }
+  .rating p {
+    font-size: 0.5em;
+    margin: 0.25em 0 1.5em 0;
+    color: #555; }

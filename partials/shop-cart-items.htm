@@ -14,7 +14,7 @@
 <div class="cart-item row">
 	<div class="col-xs-12 col-sm-2">
 		<div class="product-thumb">
-			<img class="img-responsive" alt="{{ item.product.name }}" src="{{ item.product.images.first.thumbnail(129, 129)|default('http://placehold.it/129x129') }}" /> 
+			<img class="img-responsive" alt="{{ item.product.name }}" src="{{ item.product.images.first.thumbnail(129, 129)|default('http://placehold.it/129x129') }}" />
 		</div>
 	</div>
 	<div class="col-xs-12 col-sm-4 col-lg-5 cart-details">
@@ -24,10 +24,29 @@
 				{{ item.product.price|currency }}
 			</small></p>
 		</div>
-        {% set options = item.optionsString() %}
-        {% if options %}
-            <p class="h6">{{ options|unescape }}</p>
-        {% endif %}
+    {% set options = item.optionsString() %}
+    {% if options %}
+        <p class="h6">{{ options|unescape }}</p>
+    {% endif %}
+		<div class="bulk-pricing">
+			{% if item.product.priceTiers.count %}
+				<p class="bold">Bulk Pricing</p>
+				<div class="widget shopping-cart-summary">
+					<table class="volume-pricing-table">
+						<thead><tr><td>Qty</td><td>Price</td></tr></thead>
+						{% for priceTier in item.product.priceTiers %}
+						<tr>
+							<td>
+								{% if loop.last %} {{priceTier.quantity}}+
+								{% else %} {{ priceTier.quantity}} - {{item.product.priceTiers[loop.index].quantity - 1}} {% endif %}
+							</td>
+							<td>{{priceTier.price|currency}}/each</td>
+						</tr>
+						{% endfor %}
+					</table>
+				</div>
+			{% endif %}
+		</div>
 	</div>
 	<div class="col-xs-12 col-sm-3 col-lg-2 {{ edit_cart ? 'cart-details' : null }} {{ edit_cart ? null : 'no-edit' }}">
 		<div class="quantity">
@@ -37,7 +56,7 @@
 					<input type="text" name="item_quantity[{{ item.key }}]" class="form-control quantity" value="{{ item.quantity }}">
 					<button class="quantity-btn plus btn btn-lg btn-default"><i class="fa fa-plus"></i></button>
 				</div>
-		    	
+
 		    {% else %}
 		   		<div class="h3">{{ item.quantity }}</div>
 		    {% endif %}
@@ -48,8 +67,8 @@
 			{{ item.total()|currency }}
 		</div>
 		{%if edit_cart %}
-			<a class="remove-item" href="#close" 
-			data-ajax-handler="shop:cart" 
+			<a class="remove-item" href="#close"
+			data-ajax-handler="shop:cart"
 			{# data-ajax-confirm="Do you really want to remove this item from the cart?" #}
 			data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart, #navbar-totals=shop-minicart-totals"
 			data-ajax-extra-fields="delete_item='{{ item.key }}'"><i class="fa fa-times"></i></a>
