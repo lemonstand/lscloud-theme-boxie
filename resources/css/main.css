@@ -7235,6 +7235,12 @@ input[type="password"]:focus + label {
 #order,
 #new-products,
 #featured-products,
+.related-items ul li {
+  list-style: none;
+}
+.related-items .row {
+  margin-right: 0;
+}
 #shop {
   background: #f8f8f8;
 }

@@ -24,6 +24,26 @@ url: '/product/:urlName'
 					<div id="product-page">
 						{{ partial('shop-product') }}
 					</div>
+
+					{% if product.related.count %}
+
+				    <div class="related-items product-list col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				      <h3>Related Items</h3>
+				      <div class="row">
+				        <ul class="clearfix">
+
+				          {% for product in product.crosssells %}
+				            {{ partial('shop-product-grid-item', {'product':product}) }}
+				          {% endfor %}
+				          {% for product in product.upsells %}
+				            {{ partial('shop-product-grid-item', {'product':product}) }}
+				          {% endfor %}
+
+				        </ul>
+				      </div>
+				    </div>
+
+			    {% endif %}
 				</div>
 
 			{% else %}
