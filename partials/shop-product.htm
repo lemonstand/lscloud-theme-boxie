@@ -5,7 +5,7 @@
 	{% if theme.ratingToggle %}
 		<div class="product-rating-container">
 			<div class="row">
-				<div class="col-xs-12 col-sm-6">
+				<div class="col-xs-12 col-sm-12">
 					<!-- product ratings -->
 					{% set product_rating = product.rating() %}
 					<p style="display: inline;">
@@ -16,21 +16,22 @@
 							&star;&star;&star;&star;&star;
 							(no reviews yet)
 						{% endif %}
+						{% if product_rating.total_reviews %}
+							{{ partial('shop-product-review-view') }}
+							<!-- View Review -->
+							<a id="view-review" href="#" data-toggle="modal" data-target="#productReviewModal">View Review(s)</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+
+							<!-- Write Review -->
+							<a id="write-review" href="#" data-toggle="modal" data-target="#productWriteModal">Write Review</a>
+						{% else %}
+							<!-- Write Review -->
+							<a id="write-review" href="#" data-toggle="modal" data-target="#productWriteModal">Write Review</a>
+						{% endif %}
 					</p>
 				</div>
-				<div class="col-xs-12 col-sm-6 product-review-controls">
-					{% if product_rating.total_reviews %}
-						{{ partial('shop-product-review-view') }}
-						<!-- View Review -->
-						<a id="view-review" href="#" data-toggle="modal" data-target="#productReviewModal">View Review(s)</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<!-- <div class="col-xs-12 col-sm-6 product-review-controls">
 
-						<!-- Write Review -->
-						<a id="write-review" href="#" data-toggle="modal" data-target="#productWriteModal">Write Review</a>
-					{% else %}
-						<!-- Write Review -->
-						<a id="write-review" href="#" data-toggle="modal" data-target="#productWriteModal">Write Review</a>
-					{% endif %}
-				</div>
+				</div> -->
 			</div>
 
 
@@ -105,12 +106,14 @@
 		</div>
 	{% endif %}
 
-	<div id="sharrre" class="social-buttons">
-		<h6 class="share-title">share with your friends</h6>
-		<ul class="inline list-inline square-icons">
-			<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-			<li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-			<li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
-		</ul>
-	</div>
+	{% if theme.socialToggle %}
+		<div id="sharrre" class="social-buttons">
+			<h6 class="share-title">share with your friends</h6>
+			<ul class="inline list-inline square-icons">
+				<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+				<li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+				<li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+			</ul>
+		</div>
+	{% endif %}
 </div>
