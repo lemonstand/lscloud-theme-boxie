@@ -474,6 +474,11 @@ p {
   font-weight: 200;
   line-height: 1.4;
 }
+@media (min-width: 320px) {
+  .btn.btn-lg.btn-checkout-step .hidden-sm {
+    display: none;
+  }
+}
 @media (min-width: 768px) {
   .lead {
     font-size: 21px;
