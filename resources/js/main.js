@@ -413,3 +413,7 @@
 	});
 
 })(jQuery);
+
+function writeReview() {
+    $('#productWriteModal').modal('show');
+}
