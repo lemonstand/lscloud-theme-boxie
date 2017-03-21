@@ -4,7 +4,7 @@ template: inner
 protocol: all
 published: true
 name: Blog
-url: /blog
+url: /archives/:type
 description: 'blog template'
 ---
 
@@ -28,9 +28,9 @@ description: 'blog template'
             {% set publishedPosts = publishedPosts + 1 %}
           {% endif %}
           <div class="product-item">
-            <h3 class="product-title"><a href="blog/{{ post.guid }}">{{ post.title }}</a></h3>
+            <h3 class="product-title"><a href="/blog/{{ post.guid }}">{{ post.title }}</a></h3>
             <div>{{ post.excerpt | unescape }}</div>
-            <div><a href="blog/{{ post.guid }}">Read More</a></div>
+            <div><a href="/blog/{{ post.guid }}">Read More</a></div>
           </div>
           <hr/>
         {% endfor %}

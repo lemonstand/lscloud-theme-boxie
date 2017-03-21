@@ -13,12 +13,13 @@ url: /blog/:slug
 
 <section class="page-section row" id="single-product">
   {{ code_block('breadcrumbs') }}
-	<div class="col-md-4">
-		{% if featured_image %}
+	{% if featured_image %}
+		<div class="col-md-4">
+
 		  <img class="img-responsive" src="{{ featured_image.thumbnail(1000, 'auto')|default('http://placehold.it/1000x365') }}" alt="{{ featured_image.alt }}"/>
-		{% endif %}
-	</div>
-  <div class="col-md-8">
+		</div>
+	{% endif %}
+  <div class="{% if featured_image %} col-md-8 {% else %} col-md-12 {% endif %}">
 		<h2>{{ post.title }} <small>Published {{ post.published_on | date("F j, Y") }} In {{ post.type }}</small></h2>
 		<p>
 			{{ post.body | unescape }}
