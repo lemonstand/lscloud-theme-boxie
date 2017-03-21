@@ -15,20 +15,42 @@ url: '/product/:urlName'
 		{{ code_block('breadcrumbs') }}
 		{{ open_form({'class': 'custom', 'onsubmit': 'return false'}) }}
 			{% if product %}
-	
+
 				<div class="row">
 					<div id="product-images">
 						{{ partial('shop-product-gallery') }}
 					</div>
-					
+
 					<div id="product-page">
 						{{ partial('shop-product') }}
 					</div>
+
+					{% if product.related.count %}
+
+				    <div class="related-items product-list col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				      <h3>Related Items</h3>
+				      <div class="row">
+				        <ul class="clearfix">
+
+				          {% for product in product.crosssells %}
+				            {{ partial('shop-product-grid-item', {'product':product}) }}
+				          {% endfor %}
+				          {% for product in product.upsells %}
+				            {{ partial('shop-product-grid-item', {'product':product}) }}
+				          {% endfor %}
+
+				        </ul>
+				      </div>
+				    </div>
+
+			    {% endif %}
 				</div>
-			
+
 			{% else %}
 				<h2>We are sorry, the requested product was not found.</h2>
 			{% endif %}
 		{{ close_form() }}
+
+		{{ partial('shop-product-review-form') }}
 	</section>
 </div>

@@ -15,7 +15,6 @@ customFields:
   socialFacebookUrl: { type: text, title: 'Global: Facebook URL', default: 'http://facebook.com/lemonstand' }
   socialTwitterUrl: { type: text, title: 'Global: Twitter URL', default: 'http://twitter.com/LemonStand' }
   socialGoogleUrl: { type: text, title: 'Global: Google+ URL', default: 'http://google.com' }
+  ratingToggle: { type: checkbox, title: 'Product Ratings', default: 'checked', comment: 'Activate product ratings for this theme.'}
+  socialToggle: { type: checkbox, title: 'Social Links', default: 'checked', comment: 'Activate social media links.'}
 ---
-
-
-

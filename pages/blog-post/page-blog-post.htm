@@ -1,0 +1,61 @@
+---
+action: 'cmscontent:blog'
+template: inner
+protocol: all
+published: true
+name: 'Blog Post'
+url: /blog/:slug
+---
+
+<div id="banner" class="jumbotron row">
+	<h1>Blogs</h1>
+</div>
+
+<section class="page-section row" id="single-product">
+  {{ code_block('breadcrumbs') }}
+	{% if featured_image %}
+		<div class="col-md-4">
+
+		  <img class="img-responsive" src="{{ featured_image.thumbnail(1000, 'auto')|default('http://placehold.it/1000x365') }}" alt="{{ featured_image.alt }}"/>
+		</div>
+	{% endif %}
+  <div class="{% if featured_image %} col-md-8 {% else %} col-md-12 {% endif %}">
+		<h2>{{ post.title }} <small>Published {{ post.published_on | date("F j, Y") }} In {{ post.type }}</small></h2>
+		<p>
+			{{ post.body | unescape }}
+		</p>
+    <div class="single-blog-post-holder">
+      <div class="col-xs-12 col-sm-12 blog-holder">
+        <!-- BLOG -->
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+
+          </div>
+          <div class="col-xs-12 col-sm-6 published-date">
+
+          </div>
+        </div>
+        <div id="blog-content">
+
+        </div>
+        <!-- BIO -->
+    	  <div class="bio-container">
+    	    {% if profile_image %}
+    	        <img class="img-circle" src="{{ profile_image.thumbnail(252, 'auto')|default('http://placehold.it/100x100') }}" style="height: 100px; width: 100px;" alt="{{ profile_image.alt }}"/>
+    	    {% endif %}
+    	    <strong>{{ post.author_name }}</strong>
+    	    <ul class="social-links">
+    		    {% for link in post.user.getSocialProfiles() %}
+  		        <li class="{{ link.name }}">
+  		          <a href="{{ link.link }}"><i class="icon icon-{{ link.name }}"></i><span>{{ link.name }}</span></a>
+  		        </li>
+    		    {% endfor %}
+    	    </ul>
+    		  <div class="author-bio">
+    	      {{ post.user.user_bio|unescape }}
+    		  </div>
+    	  </div>
+      </div>
+    </div>
+  </div>
+</section>

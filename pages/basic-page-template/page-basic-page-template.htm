@@ -1,0 +1,27 @@
+---
+action: 'cmscontent:page'
+template: inner
+protocol: all
+published: true
+name: 'Basic Page Template'
+url: '/page/:slug'
+---
+<div id="banner" class="jumbotron row">
+	<h1>{{ post.title }}</h1>
+</div>
+
+<section class="page-section row" id="single-product">
+  {{ code_block('breadcrumbs') }}
+	<div class="col-md-4">
+		{% if featured_image %}
+		  <img class="img-responsive" src="{{ featured_image.thumbnail(1000, 'auto')|default('http://placehold.it/1000x365') }}" alt="{{ featured_image.alt }}"/>
+		{% endif %}
+	</div>
+  <div class="col-md-8">
+    <p>
+      {{ post.excerpt | unescape }}
+    </p>
+    <p>
+			{{ post.body | unescape }}
+		</p>
+</section>

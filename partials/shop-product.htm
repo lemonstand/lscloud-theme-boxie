@@ -1,5 +1,45 @@
 {% set on_sale = product.onSale %}
 <div class="col-sm-6">
+	<h1 itemprop="name">{{ product.name }}</h1>
+
+	{% if theme.ratingToggle %}
+		<div class="product-rating-container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12">
+					<!-- product ratings -->
+					{% set product_rating = product.rating() %}
+					<p style="display: inline;">
+						{% if product_rating.total_reviews %}
+							{{ partial('product-rating-stars') }}
+							({{ product_rating.total_reviews }})
+						{% else %}
+							&star;&star;&star;&star;&star;
+							(no reviews yet)
+						{% endif %}
+						{% if product_rating.total_reviews %}
+							{{ partial('shop-product-review-view') }}
+							<!-- View Review -->
+							<a id="view-review" href="#" data-toggle="modal" data-target="#productReviewModal">View Review(s)</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+
+							<!-- Write Review -->
+							<a id="write-review" href="#" data-toggle="modal" data-target="#productWriteModal">Write Review</a>
+						{% else %}
+							<!-- Write Review -->
+							<a id="write-review" href="#" data-toggle="modal" data-target="#productWriteModal">Write Review</a>
+						{% endif %}
+					</p>
+				</div>
+				<!-- <div class="col-xs-12 col-sm-6 product-review-controls">
+
+				</div> -->
+			</div>
+
+
+
+
+
+		</div>
+	{% endif %}
 	<div class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 		<h2 itemprop="price">
 			{% if on_sale %}
@@ -7,27 +47,29 @@
 			{% endif %}
 			{{ product.price|currency }}
 		</h2>
-		
+
 		{% if not product.isOutOfStock() %}
 		<link itemprop="availability" href="http://schema.org/InStock" />
 		{% else %}
 		<link itemprop="availability" href="http://schema.org/OutOfStock" />
 		{% endif %}
 	</div>
-	
+
 	{% if product.description %}
 	<div class="excerpt" itemprop="description">
 		{{ product.description|unescape }}
 	</div>
 	{% endif %}
-		
-	{{ partial('shop-product-attributes') }}
-			
+
+	{% if product.productAttributes.count %}
+		{{ partial('shop-product-attributes') }}
+	{% endif %}
+
 	{% if product.enabled %}
-			
+
 			{{ partial('shop-product-options') }}
 			{{ partial('shop-product-extras') }}
-			
+
 		{% if not product.isOutOfStock() or product.allow_preorder %}
 			<input type="hidden" name="productId" value="{{ product.id }}"/>
 			<div class="add-cart-holder form-group">
@@ -38,26 +80,40 @@
 					<button class="quantity-btn plus btn btn-lg btn-default"><i class="fa fa-plus"></i></button>
 				</div>
 				<a class="btn btn-lg btn-danger btn-add-cart" href="#" data-ajax-handler="shop:onAddToCart" data-ajax-update="#mini-cart=shop-minicart, #product-page=shop-product, #navbar-totals=shop-minicart-totals">Add to Cart <i class="fa fa-shopping-cart"></i></a>
+				{% if product.in_stock_amount %}<div><i><span class="stock-remaining">{{ product.in_stock_amount }} left in stock</span></i></div> {% endif %}
 			</div>
-			
+
 		{% else %}
 			<div class="not-available">
 				<h5>This product is temporarily unavailable</h5>
 			<div>
 		{% endif %}
-		
+
 	{% else %}
 		<div class="not-available">
 			<h5>This product is not available</h5>
 		<div>
 	{% endif %}
-	
-	<div id="sharrre" class="social-buttons">
-		<h6 class="share-title">share with your friends</h6>
-		<ul class="inline list-inline square-icons">
-			<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-			<li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-			<li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
-		</ul>
-	</div>
+
+	{% if product.priceTiers.count %}
+		<div class="col-xs-12 col-sm-12">
+			<div class="row">
+				<h3>Bulk Pricing</h3>
+				<div>
+					{{ partial('shop-product-bulk-pricing')}}
+				</div>
+			</div>
+		</div>
+	{% endif %}
+
+	{% if theme.socialToggle %}
+		<div id="sharrre" class="social-buttons">
+			<h6 class="share-title">share with your friends</h6>
+			<ul class="inline list-inline square-icons">
+				<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+				<li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+				<li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+			</ul>
+		</div>
+	{% endif %}
 </div>
