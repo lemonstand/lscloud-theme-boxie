@@ -3,6 +3,16 @@
   "version": "0.0.0",
   "description": "A theme for LemonStand 2",
   "main": "theme.yaml",
+  "lemonstand" : {
+    "code":"boxie",
+    "type": "theme",
+    "options": "options.json",
+    "demo" : "https//boxie.lemonstand.com",
+    "screenshot" : {
+      "small":"https://raw.githubusercontent.com/lemonstand/lscloud-theme-boxie/master/resources/screenshots/tiny-square.png",
+      "large":"https://raw.githubusercontent.com/lemonstand/lscloud-theme-boxie/master/resources/screenshots/large-square.png"
+    }
+  },  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
