@@ -11,10 +11,14 @@ customFields:
   faviconImage: {type:image, title:'Favicon Image (Image you see on the chrome/tab)', default:'@/img/bg-dropdown-arrow.png'}
   logoImage: { type: image, title: 'Global: Logo Image', default: '@/img/logo.png'}
   navbarBackgroundColor: { type:color, title:'Global: Navbar Background Color', default:'white'}
+  homepageImageBannerA: { type: image, title: 'Home: Banner Image 1', default: '@/img/boxie-slider-headphones.jpg' }
+  homepageImageBannerB: { type: image, title: 'Home: Banner Image 2', default: '@/img/boxie-slider-speakers.jpg' }
+  homepageImageBannerC: { type: image, title: 'Home: Banner Image 3', default: '' }
   navbarLinkColor: { type:color, title:'Global: Navbar Link Color', default:'#777777'}
   socialFacebookUrl: { type: text, title: 'Global: Facebook URL', default: 'http://facebook.com/lemonstand' }
   socialTwitterUrl: { type: text, title: 'Global: Twitter URL', default: 'http://twitter.com/LemonStand' }
   socialGoogleUrl: { type: text, title: 'Global: Google+ URL', default: 'http://google.com' }
   ratingToggle: { type: checkbox, title: 'Product Ratings', default: 'checked', comment: 'Activate product ratings for this theme.'}
   socialToggle: { type: checkbox, title: 'Social Links', default: 'checked', comment: 'Activate social media links.'}
+  crossSellToggle: { type: checkbox, title: 'Show Cross Sell/Upsell Items', default: 'checked', comment: 'Show or hide product cross sell and upsell items if a product has cross sell or upsell items.'}
 ---

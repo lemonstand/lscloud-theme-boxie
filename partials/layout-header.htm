@@ -14,10 +14,12 @@
 			<ul class="list-unstyled clearfix">
 				<li class="hidden-xs">
 					{% if customer %}
-					{# Welcome, {{ customer.first_name }}! #}
-					<a href="{{ site_url('logout') }}" class="btn"><span>Log Out</span> <i class="fa fa-unlock-alt"></i></a>
+						{# Welcome, {{ customer.first_name }}! #}
+						<a href="{{ site_url('orders') }}">My Orders</a> |
+					  <a href="{{ site_url('profile') }}">My Profile</a>
+						<a href="{{ site_url('logout') }}" class="btn"><span>Log Out</span> <i class="fa fa-unlock-alt"></i></a>
 					{% else %}
-					<a href="{{ site_url('login') }}" class="btn"><span>Log In</span> <i class="fa fa-lock"></i></a>
+						<a href="{{ site_url('login') }}" class="btn"><span>Log In</span> <i class="fa fa-lock"></i></a>
 					{% endif %}
 				</li>
 				<li id="navbar-totals" class="totals">
@@ -38,6 +40,18 @@
 			<div class="navbar-left">
 				{% set active_page = globals.active_page|default('home') %}
 				{{ widget_block("header-menu") }}
+				<ul class="visible-xs nav navbar-nav">
+					<li class="{{ active_page == 'orders' ? 'active' : null }}"><a href="{{ site_url('orders') }}">My Orders</a></li>
+					<li class="{{ active_page == 'profile' ? 'active' : null }}"><a href="{{ site_url('profile') }}">My Profile</a></li>
+					<li class="col-xs-12">
+				    {% if customer %}
+				    	{# Welcome, {{ customer.first_name }}! #}
+							<a href="{{ site_url('logout') }}" class="btn btn-block btn-default">Logout <i class="fa fa-unlock-alt"></i></a>
+				    {% else %}
+				    	<a href="{{ site_url('login') }}" class="btn btn-block btn-default">Login <i class="fa fa-lock"></i></a>
+				    {% endif %}
+				  </li>
+				</ul>
 			</div>
 
 

@@ -12,11 +12,11 @@ url: /
 			<li data-target="#home-carousel" data-slide-to="0" class="active"></li>
 			<li data-target="#home-carousel" data-slide-to="1"></li>
 		</ol>
-		
+
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="{{ 'img/boxie-slider-headphones.jpg'|theme_resource }}" alt="demo_slide_2" />
+				<img src="{{ theme.homepageImageBannerA.thumbnail(500, 'auto')}}" alt="demo_slide_2" />
 				<div class="jumbotron carousel-caption">
 					<h1><i class="fa fa-cube"></i> Boxie!</h1>
 					<p>A Responsive LemonStand Theme.</p>
@@ -24,7 +24,7 @@ url: /
 				</div>
 			</div>
 			<div class="item">
-				<img src="{{ 'img/boxie-slider-speakers.jpg'|theme_resource }}" alt="demo_slide_1" />
+				<img src="{{ theme.homepageImageBannerB.thumbnail(500, 'auto')}}" alt="demo_slide_1" />
 				<div class="jumbotron carousel-caption left">
 					<h1>Speakers</h1>
 					<p>Cube speakers. Awesome.</p>
@@ -32,7 +32,7 @@ url: /
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- Controls -->
 		<a class="left carousel-control" href="#home-carousel" data-slide="prev">
 			<i class="fa fa-angle-left"></i>
@@ -47,15 +47,15 @@ url: /
 	<h2 class="section-title"><span>Featured Products</span></h2>
 		{% set featuredCollection = 'featured'|collection %}
 		{% if featuredCollection %}
-	
+
 			{% for product in featuredCollection.products %}
 				<div class="col-sm-4 product-holder">
-		            
+
 		            {{ partial('shop-grid-item', { 'product': product }) }}
-		                
+
 		        </div>
 			{% endfor %}
-			
+
 		{% else %}
 			<p>The product collection was not found. Please create this group on the Shop/Collections page.</p>
 		{% endif %}
@@ -66,15 +66,15 @@ url: /
 	<div id="product-carousel" class="col-xs-12">
 		{% set featuredCollection = 'new'|collection %}
 		{% if featuredCollection %}
-	
+
 			{% for product in featuredCollection.products %}
 				<div class="product-holder">
-		            
+
 		            {{ partial('shop-grid-item', { 'product': product }) }}
-		                
+
 		        </div>
 			{% endfor %}
-			
+
 		{% else %}
 			<p>The product collection was not found. Please create this group on the Shop/Collections page.</p>
 		{% endif %}
