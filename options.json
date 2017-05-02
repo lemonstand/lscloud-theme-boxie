@@ -1,0 +1,64 @@
+{
+  "settings": {
+    "btnPrimaryColor": {
+      "type": "color",
+      "title": "Primary Button Background Color",
+      "default": "#0c4d6c"
+    },
+    "btnPrimaryHoverColor": {
+      "type": "color",
+      "title": "Primary Button Hover Background Color",
+      "default": "#083347"
+    },
+    "faviconImage": {
+      "type": "image",
+      "title": "Favicon Image (Image you see on the chrome/tab)",
+      "default": "@/img/bg-dropdown-arrow.png"
+    },
+    "logoImage": {
+      "type": "image",
+      "title": "Global: Logo Image",
+      "default": "@/img/logo.png"
+    },
+    "navbarBackgroundColor": {
+      "type": "color",
+      "title": "Global: Navbar Background Color",
+      "default": "white"
+    },
+    "navbarLinkColor": {
+      "type": "color",
+      "title": "Global: Navbar Link Color",
+      "default": "#777777"
+    },
+    "socialFacebookUrl": {
+      "type": "text",
+      "title": "Global: Facebook URL",
+      "default": "http://facebook.com/lemonstand"
+    },
+    "socialTwitterUrl": {
+      "type": "text",
+      "title": "Global: Twitter URL",
+      "default": "http://twitter.com/LemonStand"
+    },
+    "socialGoogleUrl": {
+      "type": "text",
+      "title": "Global: Google+ URL",
+      "default": "http://google.com"
+    },
+    "ratingToggle": {
+      "type": "checkbox",
+      "title": "Product Ratings",
+      "default": "checked",
+      "comment": "Activate product ratings for this theme."
+    },
+    "socialToggle": {
+      "type": "checkbox",
+      "title": "Social Links",
+      "default": "checked",
+      "comment": "Activate social media links."
+    }
+  },
+  "pages": {
+    "404": "404"
+  }
+}
