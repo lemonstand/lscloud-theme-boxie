@@ -1,14 +1,14 @@
 {
-  "name": "lscloud-theme-boxie",
-  "version": "0.0.0",
-  "description": "A theme for LemonStand 2",
+  "name": "Boxie",
+  "version": "1.0.0",
+  "description": "Boxie is a clean and modern template with a focus on being user friendly and simple for customers. Allow them to quickly navigate your site and get to the products they want to purchase in just a few clicks. Use the Boxie theme if your products are built around simplicity.",
   "main": "theme.yaml",
   "lemonstand" : {
     "code":"boxie",
     "type": "theme",
     "options": "options.json",
     "demo" : "https//boxie.lemonstand.com",
-    "screenshot" : {
+    "screenshots" : {
       "small":"https://raw.githubusercontent.com/lemonstand/lscloud-theme-boxie/master/resources/screenshots/tiny-square.png",
       "large":"https://raw.githubusercontent.com/lemonstand/lscloud-theme-boxie/master/resources/screenshots/large-square.png"
     }
@@ -20,7 +20,7 @@
     "type": "git",
     "url": "git://github.com/lemonstand/lscloud-theme-boxie.git"
   },
-  "author": "Nic Oliver",
+  "author": "LemonStand <support@lemonstand.com> (http://docs.lemonstand.com)",
   "licenses": [
     {
       "type": "Creative Commons Attribution-NoDerivatives 4.0 International",
