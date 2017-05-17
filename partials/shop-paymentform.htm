@@ -1,11 +1,51 @@
 {% if paymentMethod is defined %}
-    {% set name = paymentMethod.getFrontendPartialName() %}
-    {{ partial(name, {paymentMethod: paymentMethod, payment: payment}) }}
+    {% if paymentMethod.isLegacy() %}
+        <p>
+            This payment method type is no longer supported. Create a standard or custom method.
+        </p>
+    {% elseif paymentMethod.isStandard() %}
+        <!-- Render iFrame payment form if a standard-type payment method. -->
+        {% if hasFeature('saved-cards') %}
+            {% set saved_card_enabled = true %}
+        {% else %}
+            {% set saved_card_enabled = false %}
+        {% endif %}
+        {{ paymentForm({
+                options: {
+                    number: {
+                        label: ' ',
+                        placeholder: 'Card Number',
+                        style: "font-family: Helvetica Neue, Courier New, Courier Monospace, monospace; letter-spacing: 1.5px; font-weight: 300; font-size: 16px; text-transform: uppercase; color: #555; line-height: 42px; width: 100%;"
+                    },
+                    cvv: {
+                        label: ' ',
+                        placeholder: 'CVV',
+                        style: "font-family: Helvetica Neue, Courier New, Courier Monospace, monospace; letter-spacing: 1.5px; font-weight: 300; font-size: 16px; text-transform: uppercase; color: #555; line-height: 42px; width: 100%;"
+                    },
+                    is_default: {
+                        label:'Make my default card'
+                    },
+                    expiry: {
+                        label:' '
+                    },
+                    full_name: {
+                        label:' ',
+                        placeholder: 'Cardholder Name'
+                    },
+                    save_card: {
+                        label: 'Save Card',
+                        enabled: saved_card_enabled
+                    }
+                }
+            },
+            paymentMethod
+        ) }}
+    {% elseif paymentMethod.isCustom() %}
+        {% set name = paymentMethod.getFrontendPartialName() %}
+        {{ partial(name, {paymentMethod: paymentMethod, payment: payment}) }}
+    {% endif %}
 {% else %}
-  {% set message = payment_method.pay_offline_message() %}
-  {% if message %}
-    <p>{{ message }}</p>
-  {% else %}
-    <p>Please select a payment method.</p>    
-  {% endif %}
+    <p>
+        Please select a payment method.
+    </p>
 {% endif %}
