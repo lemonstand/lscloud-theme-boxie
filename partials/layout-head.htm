@@ -24,11 +24,15 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 <style type="text/css">
-  .btn-primary{
-    background-color:{{ theme.btnPrimaryColor }};
+  .btn-primary,
+  .ls-card-form .submit-button,
+  .ls-card-form .delete-button {
+    background-color: {{ theme.btnPrimaryColor }};
   }
-  .btn-primary:hover{
-    background-color:{{ theme.btnPrimaryHoverColor }};
+  .btn-primary:hover,
+  .ls-card-form .submit-button:hover,
+  .ls-card-form .delete-button:hover {
+    background-color: {{ theme.btnPrimaryHoverColor }};
   }
   .navbar-default .navbar-nav > li > a{
       color: {{ theme.navbarLinkColor }};
