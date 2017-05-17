@@ -21,6 +21,9 @@ url: /checkout
 					
 		<div id="checkout-page">{{ partial('shop-checkout') }}</div>
 
+		{% if hasFeature('saved-cards') %}
+            {{ code_block('script') }}
+        {% endif %}
 	</div>
 	
 	<div id="cart-totals" class="col-sm-12 col-md-3">

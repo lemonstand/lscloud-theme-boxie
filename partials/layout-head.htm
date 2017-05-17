@@ -1,4 +1,5 @@
 {{ code_block('setup') }}
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,17 +9,20 @@
 <link rel="shortcut icon" href="{{ theme.faviconImage.thumbnail('auto', 'auto') }}" type="image/png">
 <title>{{ page.title }}</title>
 
+<link rel="stylesheet" type="text/css" href="/cms/lemonstand.css">
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,800,300' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="/cms/core.css">
 <link rel="stylesheet" type="text/css" href="{{ 'font/font-awesome-4.1.0/css/font-awesome.min.css'|theme_resource }}">
 <link href="{{ 'css/main.css'|theme_resource }}" rel="stylesheet">
+<link href="{{ 'css/custom.css'|theme_resource }}" rel="stylesheet">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript" src="/cms/lemonstand.js"></script>
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-
 <style type="text/css">
   .btn-primary{
     background-color:{{ theme.btnPrimaryColor }};
