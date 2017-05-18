@@ -86,3 +86,12 @@
 .form-row .btn {
     float: left;
 }
+.ls-card-form .error-highlight,
+.ls-card-form .error-highlight:focus {
+    border-color: #D34246 !important;
+}
+
+.ls-card-form .valid-highlight,
+.ls-card-form .valid-highlight:focus {
+    border-color: #3DE000 !important;
+}
