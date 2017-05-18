@@ -53,7 +53,6 @@
     font-weight: 300;
 }
 .ls-card-form .card-form-input:focus {
-    border-color: black;
     background-color: inherit;
 }
 .ls-card-form .card-form-input::-webkit-input-placeholder {
