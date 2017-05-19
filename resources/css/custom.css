@@ -1,0 +1,97 @@
+/* Card Form */
+
+.ls-card-form {
+    width: 100%;
+}
+.card-form-expiry-outer label {
+    display: inherit;
+}
+.card-table {
+    font-size: 15px;
+    background-color: #EEEEEE;
+}
+.card-table th {
+    padding: 10px;
+    color: #777777;
+}
+.card-table a,
+.card-table a:hover,
+.card-table a:focus {
+    text-decoration: underline;
+}
+.card-form-close {
+    display: none;
+}
+.card-form-open {
+    display: block;
+}
+.ls-card-form .submit-button,
+.ls-card-form .delete-button {
+    color: #FFFFFF;
+    background-color: inherit;
+    border-color: #093D55;
+    border: 1px solid transparent;
+    border-radius: 0;
+    margin-top: 5px;
+    font-family: inherit;
+    letter-spacing: inherit;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.ls-card-form .submit-button:hover,
+.ls-card-form .delete-button:hover {
+    background: #494c50;
+    color: white;
+}
+.ls-card-form .card-form-input {
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    font-family: inherit;
+    box-shadow: none;
+    border-radius: 0;
+    color: #555;
+    font-weight: 300;
+}
+.ls-card-form .card-form-input:focus {
+    background-color: inherit;
+}
+.ls-card-form .card-form-input::-webkit-input-placeholder {
+    font-family: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    text-transform: uppercase;
+}
+.ls-card-form .card-form-input:-moz-placeholder {
+    /* Firefox 18- */
+    
+    font-family: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    text-transform: uppercase;
+}
+.ls-card-form .card-form-input::-moz-placeholder {
+    /* Firefox 19+ */
+    
+    font-family: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    text-transform: uppercase;
+}
+.ls-card-form .card-form-input:-ms-input-placeholder {
+    font-family: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    text-transform: uppercase;
+}
+.form-row .btn {
+    float: left;
+}
+.ls-card-form .error-highlight,
+.ls-card-form .error-highlight:focus {
+    border-color: #D34246 !important;
+}
+
+.ls-card-form .valid-highlight,
+.ls-card-form .valid-highlight:focus {
+    border-color: #3DE000 !important;
+}

@@ -1,18 +1,10 @@
-{% if paymentMethod is defined %}
-    {% if paymentMethod.isLegacy() %}
-        <p>
-            This payment method type is no longer supported. Create a standard or custom method.
-        </p>
-    {% elseif paymentMethod.isStandard() %}
-        <!-- Render iFrame payment form if a standard-type payment method. -->
-        {% if hasFeature('saved-cards') %}
-            {% set saved_card_enabled = true %}
-        {% else %}
-            {% set saved_card_enabled = false %}
-        {% endif %}
-        {{ paymentForm({
+<div class="card-form-close" id="add-card-form">
+    <div class="add-card-form">
+        <p id="title-p">Add Card</p>
+        <div class="add-card-form-container">
+            {{ customerCardForm('add', {
                 options: {
-                    number: {
+                    number:{
                         label: ' ',
                         placeholder: 'Card Number',
                         style: "font-family: Helvetica Neue, Courier New, Courier Monospace, monospace; letter-spacing: 1.5px; font-weight: 300; font-size: 16px; text-transform: uppercase; color: #555; line-height: 42px; width: 100%;"
@@ -31,21 +23,11 @@
                     full_name: {
                         label:' ',
                         placeholder: 'Cardholder Name'
-                    },
-                    save_card: {
-                        label: 'Save Card',
-                        enabled: saved_card_enabled
                     }
                 }
-            },
-            paymentMethod
-        ) }}
-    {% elseif paymentMethod.isCustom() %}
-        {% set name = paymentMethod.getFrontendPartialName() %}
-        {{ partial(name, {paymentMethod: paymentMethod, payment: payment}) }}
-    {% endif %}
-{% else %}
-    <p>
-        Please select a payment method.
-    </p>
-{% endif %}
+            }, {
+              'data-ajax-update': "#profile-edit-card=shop-customerprofile-edit-card"
+            }) }}
+        </div>
+    </div>
+</div>
