@@ -7,7 +7,7 @@
     "code":"boxie",
     "type": "theme",
     "options": "options.json",
-    "demo" : "https//boxie.lemonstand.com",
+    "demo" : "https://boxie.lemonstand.com",
     "screenshots" : {
       "small":"https://raw.githubusercontent.com/lemonstand/lscloud-theme-boxie/master/resources/screenshots/tiny-square.png",
       "large":"https://raw.githubusercontent.com/lemonstand/lscloud-theme-boxie/master/resources/screenshots/large-square.png"
