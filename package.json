@@ -1,7 +1,7 @@
 {
   "name": "Boxie",
   "version": "1.0.0",
-  "description": "Boxie is a clean and modern template with a focus on being user friendly and simple for customers. Allow them to quickly navigate your site and get to the products they want to purchase in just a few clicks. Use the Boxie theme if your products are built around simplicity.",
+  "description": "Boxie is a clean and modern theme with a focus on being user friendly and simple for customers. It's colors are customizable, and it includes a handy product quick view feature. It uses a simple 3-step checkout process that won't overwhelm your customers.",
   "main": "theme.yaml",
   "lemonstand" : {
     "code":"boxie",
@@ -12,7 +12,7 @@
       "small":"https://raw.githubusercontent.com/lemonstand/lscloud-theme-boxie/master/resources/screenshots/tiny-square.png",
       "large":"https://raw.githubusercontent.com/lemonstand/lscloud-theme-boxie/master/resources/screenshots/large-square.png"
     }
-  },  
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -44,5 +44,12 @@
     "gulp-ruby-sass": "^1.0.5",
     "gulp-uglify": "^1.2.0",
     "gulp-watch-less": "^1.0.1"
-  }
+  },
+  "keywords": [
+    "responsive",
+    "electronics",
+    "quick-view",
+    "slider",
+    "3-step-checkout"
+  ]
 }
