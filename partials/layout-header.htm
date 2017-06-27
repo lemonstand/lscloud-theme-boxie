@@ -39,6 +39,26 @@
 		<div class="navbar-collapse collapse">
 			<div class="navbar-left">
 				{% set active_page = globals.active_page|default('home') %}
+				<ul id="main-nav" class="nav navbar-nav">
+				  <li class="dropdown ">
+				    <a class="dropdown-toggle" data-toggle="dropdown" id="shop-dropdown" href="/shop">
+				    Shop <b class="caret"></b>
+				  	</a>
+				    {% if categories.count %}
+	              <ul class="dropdown-menu" role="menu" aria-labelledby="shop-dropdown">
+	                {% tree categories %}
+	                    {% for category in tree.items %}
+	                        <li role="presentation">
+														<a href="/category/{{ category.fullUrlName }}" role="menuitem" tabindex="-1">
+															{{ category.name }}
+														</a>
+													</li>
+	                    {% endfor %}
+	                {% endtree %}
+	              </ul>
+	          {% endif %}
+				  </li>
+				</ul>
 				{{ widget_block("header-menu") }}
 				<ul class="visible-xs nav navbar-nav">
 					<li class="{{ active_page == 'orders' ? 'active' : null }}"><a href="{{ site_url('orders') }}">My Orders</a></li>
