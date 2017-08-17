@@ -2,6 +2,7 @@
   "name": "Boxie",
   "version": "1.0.0",
   "description": "Boxie is a clean and modern theme with a focus on being user friendly and simple for customers. It's colors are customizable, and it includes a handy product quick view feature. It uses a simple 3-step checkout process that won't overwhelm your customers.",
+  "excerpt": "Boxie is a clean, modern theme that is simple and user friendly and includes a product quick-view.",
   "main": "theme.yaml",
   "lemonstand" : {
     "code":"boxie",
