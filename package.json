@@ -28,6 +28,7 @@
       "url": "http://creativecommons.org/licenses/by-nd/4.0/"
     }
   ],
+  "homepage": "https://github.com/lemonstand/lscloud-theme-boxie/",
   "devDependencies": {
     "del": "^1.2.0",
     "gulp": "^3.9.0",
