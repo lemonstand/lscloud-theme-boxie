@@ -25,7 +25,11 @@
 		{% else %}
 #}
 			<input type="hidden" name="productId" value="{{ product.id }}"/>
-			<a class="btn btn-danger btn-add-cart" href="#" data-ajax-handler="shop:onAddToCart" data-ajax-update="#mini-cart=shop-minicart, #navbar-totals=shop-minicart-totals, #product-page=shop-product">Add to Cart</a>
+			{% if not product.isOutOfStock() or product.allow_preorder %}
+			 <a class="btn btn-danger btn-add-cart" href="#" data-ajax-handler="shop:onAddToCart" data-ajax-update="#mini-cart=shop-minicart, #navbar-totals=shop-minicart-totals, #product-page=shop-product">Add to Cart</a>
+			{% else %}
+			 <a style="pointer-events: none;" class="btn btn-danger btn-add-cart" href="#">Sold Out</a>
+			{% endif %}
 		{% endif %}
 	</div>
 </div>
